@@ -3,3 +3,5 @@
 
 手机视图
 <mate name='viewport' content='width=device-width,initial-scale=1,user-scalable=no' />
+
+git跟踪管理的是修改，并非文件
