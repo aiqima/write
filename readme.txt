@@ -1,2 +1,5 @@
 ﻿能攻心则反侧自消，从古知兵非好战；
 不审势即宽严皆误，后来治蜀要深思。
+
+手机视图
+<mate name='viewport' content='width=device-width,initial-scale=1,user-scalable=no' />
