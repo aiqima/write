@@ -1,74 +1,84 @@
-ï»¿mkdir [fileName]  åˆ›å»ºæ–‡ä»¶å¤¹
+ï»¿mkdir [fileName]  ´´½¨ÎÄ¼ş¼Ğ
 
-cd    è¿›å…¥æ–‡ä»¶ç›®å½•
+cd    ½øÈëÎÄ¼şÄ¿Â¼
 
-pwd		æ˜¾ç¤ºå½“å‰ç›®å½•
+pwd		ÏÔÊ¾µ±Ç°Ä¿Â¼
 
-git init	å½“å‰ç›®å½•åˆ›å»ºç®¡ç†ä»“åº“
+git init	µ±Ç°Ä¿Â¼´´½¨¹ÜÀí²Ö¿â
 
-git add [fileName.txt]		å°†æ–‡ä»¶æ·»åŠ åˆ°ä»“åº“		 
+git add [fileName.txt]		½«ÎÄ¼şÌí¼Óµ½²Ö¿â		 
 
-git commit -m 'string'		æäº¤ä»“åº“å¹¶æ³¨é‡Š
+git commit -m 'string'		Ìá½»²Ö¿â²¢×¢ÊÍ
 
-git status			æŸ¥çœ‹ä»“åº“çŠ¶æ€
+git status			²é¿´²Ö¿â×´Ì¬
 
-git diff			æŸ¥çœ‹ä¸åŒä¹‹å¤„
+git diff			²é¿´²»Í¬Ö®´¦
 
-git diff HEAD -- [fileName.txt]		æŸ¥çœ‹å·¥ä½œåŒºå’Œç‰ˆæœ¬åº“é‡Œæœ€æ–°ç‰ˆæœ¬çš„åŒºåˆ«
+git diff HEAD -- [fileName.txt]		²é¿´¹¤×÷ÇøºÍ°æ±¾¿âÀï×îĞÂ°æ±¾µÄÇø±ğ
 
-git log 			æŸ¥çœ‹æäº¤æ—¥è®°ï¼ˆç”±è¿‘åˆ°è¿œï¼‰
+git log 			²é¿´Ìá½»ÈÕ¼Ç£¨ÓÉ½üµ½Ô¶£©
 
-git reflog			æ˜¾ç¤ºæ¯æ¬¡ç‰ˆæœ¬è®°å½•
+git reflog			ÏÔÊ¾Ã¿´Î°æ±¾¼ÇÂ¼
 
-cat [fileName.txt]	æŸ¥çœ‹æ–‡ä»¶å†…å®¹
+cat [fileName.txt]	²é¿´ÎÄ¼şÄÚÈİ
 
-git reset --hard HEAD^			é€€å›ä¸Šä¸€ä¸ªç‰ˆæœ¬
+git reset --hard HEAD^			ÍË»ØÉÏÒ»¸ö°æ±¾
 
-git reset --hard HEAD^^			é€€å›ä¸Šä¸Šä¸ªç‰ˆæœ¬
+git reset --hard HEAD^^			ÍË»ØÉÏÉÏ¸ö°æ±¾
 
-git reset --hard HEAD~100		é€€å›ä¸Š100ä¸ªç‰ˆæœ¬
+git reset --hard HEAD~100		ÍË»ØÉÏ100¸ö°æ±¾
 
-git reset --hard [commit id]	é€€å›[commit id]ç‰ˆæœ¬
+git reset --hard [commit id]	ÍË»Ø[commit id]°æ±¾
 
-rm	[fileName.txt]		åˆ é™¤å·¥ä½œåŒºçš„æ–‡ä»¶
+rm	[fileName.txt]		É¾³ı¹¤×÷ÇøµÄÎÄ¼ş
 
-git rm [fileName.txt]	åˆ é™¤ç‰ˆæœ¬åº“çš„æ–‡ä»¶
+git rm [fileName.txt]	É¾³ı°æ±¾¿âµÄÎÄ¼ş
 
-git checkout -- [fileName.txt]	ç‰ˆæœ¬åº“æ–‡ä»¶æ›¿æ¢å·¥ä½œåŒºæ–‡ä»¶ã€ä¸€é”®è¿˜åŸã€‘
+git checkout -- [fileName.txt]	°æ±¾¿âÎÄ¼şÌæ»»¹¤×÷ÇøÎÄ¼ş¡¾Ò»¼ü»¹Ô­¡¿
 
-git reset HEAD [fileName.txt] 	æ’¤é”€æš‚å­˜åŒºçš„æ–‡ä»¶ä¿®æ”¹
+git reset HEAD [fileName.txt] 	³·ÏúÔİ´æÇøµÄÎÄ¼şĞŞ¸Ä
 
-è¿œç¨‹ä»“åº“
-ssh-keygen -t rsa -C "youremail@example.com"		åˆ›å»ºSSH Key
 
-cd ~/.ssh 			æœç´¢å¹¶è¿›å…¥.sshç›®å½•
+###Ô¶³Ì²Ö¿â###
 
-ls -a 				æ˜¾ç¤ºéšè—æ–‡ä»¶
+ssh-keygen -t rsa -C "youremail@example.com"		´´½¨SSH Key
 
-vim id_rsa.pub		æ˜¾ç¤ºæ–‡ä»¶å†…å®¹
+cd ~/.ssh 			ËÑË÷²¢½øÈë.sshÄ¿Â¼
+
+ls -a 				ÏÔÊ¾Òş²ØÎÄ¼ş
+
+vim id_rsa.pub		ÏÔÊ¾ÎÄ¼şÄÚÈİ
+
+git remote add [origin.name] git@github.com:aiqima/write.git  		¹ØÁªgithub£¨ÏÈÔÚgithubÌí¼Óssh key£¬²¢´´½¨²Ö¿â£©
+
+git push -u [origin.name] master				½«±¾µØÄÚÈİÍÆËÍµ½Ô¶³Ì£¨µÚÒ»´ÎÔ¶³Ì²ÖÎª¿Õ Ê¹ÓÃ -u£©
+
+git push [origin.name] master 					½«±¾µØÄÚÈİÍÆËÍµ½Ô¶³Ì
+
+git remote rm [origin.name]						É¾³ıÔ¶³Ì²Ö
 
 
 -----------------------------------------------------------------------------------------------
-ä¹±ç é—®é¢˜ï¼š
+ÂÒÂëÎÊÌâ£º
 
-1ã€git add æ—¶ä¸­æ–‡æ–‡ä»¶ä¹±ç 
+1¡¢git add Ê±ÖĞÎÄÎÄ¼şÂÒÂë
 
-è§£å†³æ–¹æ³•ï¼š
-åœ¨bashæç¤ºç¬¦ä¸‹è¾“å…¥ï¼š
+½â¾ö·½·¨£º
+ÔÚbashÌáÊ¾·ûÏÂÊäÈë£º
 git config --global core.quotepath false
 
 
-2ã€git logæ˜¾ç¤ºæäº¤çš„ä¸­æ–‡logä¹±ç 
+2¡¢git logÏÔÊ¾Ìá½»µÄÖĞÎÄlogÂÒÂë
 
-è§£å†³æ–¹æ¡ˆï¼š
-è®¾ç½® git guiçš„ç•Œé¢ç¼–ç 
+½â¾ö·½°¸£º
+ÉèÖÃ git guiµÄ½çÃæ±àÂë
 git config --global gui.enconding utf-8
 
 
-3ã€ä½¿ç”¨lså‘½ä»¤æŸ¥çœ‹ä¸­æ–‡æ–‡ä»¶åä¹±ç 
+3¡¢Ê¹ÓÃlsÃüÁî²é¿´ÖĞÎÄÎÄ¼şÃûÂÒÂë
 
-è§£å†³æ–¹æ¡ˆï¼š
-ä½¿ç”¨ ls --show-control-chars å‘½ä»¤æ¥å¼ºåˆ¶ä½¿ç”¨æ§åˆ¶å°å­—ç¬¦ç¼–ç æ˜¾ç¤ºæ–‡ä»¶åï¼Œå³å¯æŸ¥çœ‹ä¸­æ–‡æ–‡ä»¶åã€‚
+½â¾ö·½°¸£º
+Ê¹ÓÃ ls --show-control-chars ÃüÁîÀ´Ç¿ÖÆÊ¹ÓÃ¿ØÖÆÌ¨×Ö·û±àÂëÏÔÊ¾ÎÄ¼şÃû£¬¼´¿É²é¿´ÖĞÎÄÎÄ¼şÃû¡£
 
-ä¸ºäº†æ–¹ä¾¿ä½¿ç”¨ï¼Œå¯ä»¥ç¼–è¾‘ /etc/git-completion.bash ï¼Œæ–°å¢ä¸€è¡Œ alias ls="ls --show-control-chars"
+ÎªÁË·½±ãÊ¹ÓÃ£¬¿ÉÒÔ±à¼­ /etc/git-completion.bash £¬ĞÂÔöÒ»ĞĞ alias ls="ls --show-control-chars"
 
