@@ -1,0 +1,39 @@
+mkdir [fileName]  创建文件夹
+
+cd    进入文件目录
+
+pwd		显示当前目录
+
+git init	当前目录创建管理仓库
+
+git add [fileName.txt]		将文件添加到仓库		 
+
+git commit -m 'string'		提交仓库并注释
+
+git status			查看仓库状态
+
+git diff			查看不同之处
+
+git diff HEAD -- [fileName.txt]		查看工作区和版本库里最新版本的区别
+
+git log 			查看提交日记（由近到远）
+
+git reflog			显示每次版本记录
+
+cat [fileName.txt]	查看文件内容
+
+git reset --hard HEAD^			退回上一个版本
+
+git reset --hard HEAD^^			退回上上个版本
+
+git reset --hard HEAD~100		退回上100个版本
+
+git reset --hard [commit id]	退回[commit id]版本
+
+rm	[fileName.txt]		删除工作区的文件
+
+git rm [fileName.txt]	删除版本库的文件
+
+git checkout -- [fileName.txt]	版本库文件替换工作区文件【一键还原】
+
+git reset HEAD [fileName.txt] 	撤销暂存区的文件修改
