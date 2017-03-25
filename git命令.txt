@@ -37,3 +37,29 @@ git rm [fileName.txt]	删除版本库的文件
 git checkout -- [fileName.txt]	版本库文件替换工作区文件【一键还原】
 
 git reset HEAD [fileName.txt] 	撤销暂存区的文件修改
+
+
+-----------------------------------------------------------------------------------------------
+乱码问题：
+
+1、git add 时中文文件乱码
+
+解决方法：
+在bash提示符下输入：
+git config --global core.quotepath false
+
+
+2、git log显示提交的中文log乱码
+
+解决方案：
+设置 git gui的界面编码
+git config --global gui.enconding utf-8
+
+
+3、使用ls命令查看中文文件名乱码
+
+解决方案：
+使用 ls --show-control-chars 命令来强制使用控制台字符编码显示文件名，即可查看中文文件名。
+
+为了方便使用，可以编辑 /etc/git-completion.bash ，新增一行 alias ls="ls --show-control-chars"
+
