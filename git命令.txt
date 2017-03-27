@@ -6,7 +6,7 @@ pwd		显示当前目录
 
 git init	当前目录创建管理仓库
 
-git add [fileName.txt]		将文件添加到仓库		 
+git add [fileName.txt]		将文件添加到暂存区		 
 
 git commit -m 'string'		提交仓库并注释
 
