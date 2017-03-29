@@ -9,3 +9,5 @@ git跟踪管理的是修改，并非文件
 git branch 平行宇宙中的分支
 
 Creating a new branch is quick and simple.
+
+--on-of分支管理策略
