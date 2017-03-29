@@ -76,7 +76,13 @@ git branch -d [name]	删除分支
 
 git log --graph --pretty=oneline --abbrev-commit		查看分支合并图		
 
+git merge --no-ff -m ' string ' [name]			非fast模式合并分支，并描述提交
 
+git stash			储存工作现场
+
+git stash list		查看工作现在
+
+git stash pop		恢复工作现场
 
 -----------------------------------------------------------------------------------------------
 乱码问题：
