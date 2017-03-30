@@ -84,6 +84,12 @@ git stash list		查看工作现在
 
 git stash pop		恢复工作现场
 
+git pull 			抓取远程的新提交
+
+git checkout -b [branch.name] origin / [branch.name]		创建本地与远程相对应的分支
+
+git branch --set-upstream [branch.name] origin / [branch.name]	建立本地分支与远程分支的关联
+
 -----------------------------------------------------------------------------------------------
 乱码问题：
 
