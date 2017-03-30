@@ -12,4 +12,6 @@ Creating a new branch is quick and simple.
 
 --on-of分支管理策略
 
+git stash		git stash list 			git stash pop
+
 line line so easy, day day no bug
