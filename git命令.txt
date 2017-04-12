@@ -96,9 +96,22 @@ git tag [name]		新建标签
 
 git tag [name] [commit id] 	历史提交上打标签
 
-git tag 			查看标签			
+git tag 			查看所有标签			
 
-git show [tagname]
+git -a [tagname] -m 'string'	指定标签信息	
+
+git -s [tagname] -m 'string'	使用PGP签名标签
+
+git show [tagname]	查看标签文字说明
+
+git push origin [tagname]	标签推送远程仓库
+
+git push origin --tags		推送全部标签至远程
+
+git tag -d [tagname]	删除本地标签
+
+git push origin : refs/tags/ [tagname]	删除远程标签
+
 
 -----------------------------------------------------------------------------------------------
 乱码问题：
