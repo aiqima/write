@@ -1,0 +1,31 @@
+﻿#line line so easy, day day no bug
+
+nodeType = 1 元素节点;
+
+nodeType = 2 属性节点;
+
+nodeType = 3 文本节点;
+
+document.creatElement('tag');		创建一个元素节点
+
+document.createTextNode('value');	创建一个文本节点
+
+document.creatAttribute('tag','value');		创建属性节点
+
+Node.setAttributeNode(attr)			插入属性节点
+
+parent.appendChild(child);			父元素最后插入子节点
+
+parent.insertBefore(newNode,oldNode);	在指定元素去插入
+
+parent.replaceChild(newNode,oldNode);	替换节点
+
+Node.cloneNode(true)			克隆节点，true表示深克隆
+
+nodeName = 元素名， nodeVaule = null;
+
+Node.childElementCount			可以查看一个元素的子节点个数，等于Node.child.length
+
+Node.hasChildNodes()			查看一个元素是否有子节点
+
+		
