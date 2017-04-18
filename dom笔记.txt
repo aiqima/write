@@ -1,5 +1,8 @@
 ﻿#line line so easy, day day no bug
 
+###node类型###
+----------------------------------------------------------------------------------------------------------
+
 nodeType = 1 元素节点;
 
 nodeType = 2 属性节点;
@@ -24,8 +27,44 @@ Node.cloneNode(true)			克隆节点，true表示深克隆
 
 nodeName = 元素名， nodeVaule = null;
 
-Node.childElementCount			可以查看一个元素的子节点个数，等于Node.child.length
+Node.childElementCount			可以查看一个元素的子节点元素个数，等于Node.children.length
 
 Node.hasChildNodes()			查看一个元素是否有子节点
 
-		
+
+###document类型###
+----------------------------------------------------------------------------------------------------------
+
+document.nodeName = #document		表示整个页面文档
+
+document.nodeTpye = 9				文档节点
+
+document.childElementCount			1
+
+document.doctype					文档类型
+
+document.documentElement			<html>
+
+document.body						<body>
+	
+document.title						<title>
+
+document.URL						页面完整url
+
+document.domain						主域名
+
+document.referrer					链接到当前页面的页面的url
+
+document.getElementById()			获取id
+
+document.getElementsTagName(tag)	获取标签
+
+document.getElementsByName()		获取名称
+
+document.write()					输出文本
+
+document.writeln()					输出文本，末尾自动 + \n 换行
+
+
+
+	
