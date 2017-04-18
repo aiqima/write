@@ -119,6 +119,8 @@ git push origin : refs/tags/ [tagname]	删除远程标签
 
 git add -f [name.db]  	强制添加文件
 
+git config alias. [tag] "git command"		配置命令别名
+
 -----------------------------------------------------------------------------------------------
 乱码问题：
 
