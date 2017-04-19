@@ -66,5 +66,39 @@ document.write()					输出文本
 document.writeln()					输出文本，末尾自动 + \n 换行
 
 
+###element类型###
+----------------------------------------------------------------------------------------------------------
+
+element.nodeName = tag  			标签名（大写）
+
+element.nodeType = 1
+
+element.nodeVaule = null
+
+element.getAttribute(name);				获取元素属性
+
+element.setAttribute(name,value);		设置元素属性
+
+element.removeAttribut(name);			移除属性
+
+element.attributes						元素全部属性（NodeList形式）
+
+element.attributes[0].nodeName			属性名
+
+element.attributes[0].nodeVaule			属性值
+
+document.createElement(tag)				创建element
+
+可直接访问的元素属性
+
+element.id
+element.title
+element.style
+element.className
+element.onClick
+
+
+				
+
 
 	
