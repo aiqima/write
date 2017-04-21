@@ -98,7 +98,31 @@ element.className
 element.onClick
 
 
+###text类型###
+----------------------------------------------------------------------------------------------------------
 				
+node.nodeName = #text
+
+node.nodeType = 3
+
+node.nodeValue = 文本内容
+
+node.appendData(text)					text添加到节点末尾
+
+node.deleteData(offset,count)			从 offset 指定的位置开始删除 count 个字符
+
+node.insertData(offet,text);			从 offset 位置插入 text
+
+node.replaceData(offset,count,text);	从 offset 位置用 text 替换 count 个字符
+
+node.splitText(offset);					从 offset 位置将当前文本分成两个节点
+
+element.normalize();					合并 element 内的所有文本节点
+
+document.createTextNode(value)			创建文本节点
+
+	
+
 
 
 	
