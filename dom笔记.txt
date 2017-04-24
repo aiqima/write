@@ -13,7 +13,7 @@ document.creatElement('tag');		创建一个元素节点
 
 document.createTextNode('value');	创建一个文本节点
 
-document.creatAttribute('tag','value');		创建属性节点
+document.creatAttribute('attr');	创建属性节点
 
 Node.setAttributeNode(attr)			插入属性节点
 
@@ -134,12 +134,35 @@ node.nodeName = #comment		注释节点
 node.nodeValue 					注释内容
 
 
+###CDATASection类型###
+----------------------------------------------------------------------------------------------------------
+
+CDATASection类型只针对
 
 
-
-
-
+###Attr类型###
+----------------------------------------------------------------------------------------------------------
 	
+attr.nodeType = 2
+
+attr.nodeName 				属性名称
+
+attr.nodeValue				属性值
+
+attr.name					名
+
+attr.value					值
+
+attr.specified				布尔值，属性是否存在
+
+getAttribute()				获取属性
+
+setAttribute()				创建属性
+
+removeAttribut()			移除属性
+
+
+
 	
 
 
