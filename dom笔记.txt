@@ -163,6 +163,33 @@ removeAttribut()			移除属性
 
 
 
+###DOM操作###
+----------------------------------------------------------------------------------------------------------
+	
+#动态脚本
+function loadScript(fileAdress){
+	var script = document.createElement('script');
+	script.type = 'text/script';
+	script.src = fileAdress;
+	document.body.appendChild(script);
+}
+
+#动态样式
+function loadLink(url){
+	var link = document.createElement('link');
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = url;
+	var head = document.getElementsTagName('head')[0];
+	head.appendChild(link);
+
+}
+
+#NodeList动态集合
+迭代NodeList列表，将NodeList.length属性赋值一个变量再访问
+
+
+
 	
 
 
