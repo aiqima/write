@@ -121,6 +121,8 @@ git add -f [name.db]  	强制添加文件
 
 git config alias. [tag] "git command"		配置命令别名
 
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
 -----------------------------------------------------------------------------------------------
 乱码问题：
 
