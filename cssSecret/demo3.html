@@ -1,0 +1,43 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<style>
+			
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;				
+			}	
+			.box1{
+				background: url(images/icon-goods.png) no-repeat #58a;
+				background-position: bottom 10px right 20px;
+			}	
+			.box2{
+				padding:10px;
+				background:url(images/icon-goods.png) no-repeat #58a;
+				background-origin: content-box;
+				background-position: bottom right;			
+			}	
+			.box3{
+				background:url(images/icon-goods.png) no-repeat #58a;
+				background-position: calc(100% - 20px) calc(100% - 10px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class='box1'>
+			<p>Code Pirate</p>
+		</div>
+		<!-- background-origin 可以改变背景的定位模型 -->
+		<div class="box2">
+			<p>Code Pirate</p>
+		</div>
+		<!-- calc() 方案 -->
+		<div class='box3'>
+			<p>Code Pirate</p>
+		</div>
+
+	</body>	
+</html>
