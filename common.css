@@ -152,3 +152,29 @@ ul,ol{
 	z-index: 999;
 	background: #fff;
 }
+/*tip animation*/
+.tip-box{
+    border-radius: 6px;
+    background: rgba(0,0,0,.6);
+    color: #FFFFFF;
+    line-height: 22px;
+    padding: 8px 15px;
+    font-size: 14px;
+    display: none;
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+}
+.tip-box p{
+    color:#FFF;
+}
+
+.enter-up-anima{
+    animation: enterUp .3s ease-in;
+}
+@keyframes enterUp{
+    0% {bottom: 0%;}
+    100% {bottom: 50%;}
+}
