@@ -189,6 +189,17 @@ function loadLink(url){
 迭代NodeList列表，将NodeList.length属性赋值一个变量再访问
 
 
+###Selector API###
+----------------------------------------------------------------------------------------------------------
+
+querySelector();			接受css选择符，匹配第一个元素
+
+querySelector('.box') = $('.box');
+
+querySelectorAll();			接受css选择符，返回NodeList
+
+Selector API 可被 document 和 element 调用
+
 
 	
 
