@@ -215,6 +215,20 @@ previousElementSibling		上一个兄弟元素
 nextElementSibling			下一个兄弟元素
 
 
+###HTML5 DOM###
+----------------------------------------------------------------------------------------------------------
+
+#classList
+
+classList.add(value);		添加类
+
+classList.remove(value);	移除类
+
+classList.toggle(value);	切换类
+
+classList.contains(value);	判断类
+
+
 
 
 	
