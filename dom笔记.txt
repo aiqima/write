@@ -220,6 +220,8 @@ nextElementSibling			下一个兄弟元素
 
 #classList
 
+getElementsByClassName();	获取类
+
 classList.add(value);		添加类
 
 classList.remove(value);	移除类
@@ -227,6 +229,23 @@ classList.remove(value);	移除类
 classList.toggle(value);	切换类
 
 classList.contains(value);	判断类
+
+#焦点管理
+
+document.activeElement		指向获得焦点的元素
+
+element.focus()				元素获得焦点
+
+#HTML 内容
+
+readyState					兼容模式检测
+
+innerHTML					替换容器内的内容
+
+outerHTML					替换容器内容，包括容器本身
+
+
+
 
 
 
