@@ -19,7 +19,7 @@ Node.setAttributeNode(attr)			插入属性节点
 
 parent.appendChild(child);			父元素最后插入子节点
 
-parent.insertBefore(newNode,oldNode);	在指定元素去插入
+parent.insertBefore(newNode,oldNode);	在指定元素前去插入
 
 parent.replaceChild(newNode,oldNode);	替换节点
 
@@ -137,7 +137,7 @@ node.nodeValue 					注释内容
 ###CDATASection类型###
 ----------------------------------------------------------------------------------------------------------
 
-CDATASection类型只针对
+CDATASection类型只针对XML文档
 
 
 ###Attr类型###
@@ -245,7 +245,15 @@ innerHTML					替换容器内的内容
 outerHTML					替换容器内容，包括容器本身
 
 
+#专有扩展
 
+parent.contains(children);	检查children是否为parent的子节点
+
+innerText					替换容器内文本
+
+outerText					替换容器文本，包括容器本身
+
+	
 
 
 
