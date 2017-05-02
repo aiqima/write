@@ -1,0 +1,249 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<style>
+			.wraper{
+				width:800px;
+				margin: 0 auto;
+			}
+			ul{
+				list-style: none;
+				padding-left: 0;
+				border:1px solid green;
+			}
+			ul.box{
+				display:flex;
+			}
+			li{
+				width: 100px;
+				height: 100px;
+				background: #58a;
+				margin: 5px;
+			}
+			p{
+				color: #f00;
+			}
+			.dire1{
+				display: flex;
+				flex-direction:row;
+			}
+			.dire2{
+				display:flex;
+				flex-direction:column;
+			}
+			.dire3{
+				display:flex;
+				flex-direction:row-reverse;
+			}
+			.wrap1{
+				display:flex;
+				flex-wrap:nowrap;
+			}
+			.wrap2{
+				display:flex;
+				flex-wrap: wrap;
+			}
+			.flow{
+				display:flex;
+				flex-flow:row-reverse wrap;
+			}
+			.justi-start{
+				display:flex;
+				justify-content:flex-start;
+			}
+			.justi-end{
+				display:flex;
+				justify-content:flex-end;
+			}
+			.justi-center{
+				display:flex;
+				justify-content:center;
+			}
+			.justi-between{
+				display:flex;
+				justify-content:space-between;
+			}
+			.justi-around{
+				display:flex;
+				justify-content:space-around;
+			}
+			.item{
+				height: 300px;
+			}
+			.item li{
+				height: auto;
+			}
+			.item-start{
+				display:flex;
+				align-items:flex-start;
+			}
+			.item-end{
+				display:flex;
+				align-items: flex-end;
+			}
+			.item-center{
+				display:flex;
+				align-items:center;
+			}
+			.item-base{
+				display:flex;
+				align-items:baseline;
+			}
+			.item-stretch{
+				display:flex;
+				align-items:stretch;
+			}
+		</style>
+	</head>
+	<body class="wraper">
+		<h4>普通无序列表</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<h4>flex 模型下的无序列表</h4>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<!-- flex-direction -->
+		<!-- 项目方向 -->
+		<h4>项目方向</h4>
+		<p>flex-direction:row</p>
+		<ul class="dire1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<p>flex-direction:column</p>
+		<ul class="dire2">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<p>flex-direction:row-reverse</p>
+		<ul class="dire3">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<h4>项目换行排序</h4>
+		<p>flex-wrap:nowrap</p>
+		<ul class="wrap1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+		<p>flex-wrap:wrap</p>
+		<ul class="wrap2">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+		<h4>方向与换行的缩写</h4>
+		<p>flex-flow:row-reverse wrap</p>
+		<ul class="flow">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+		<h4>项目对齐方式</h4>
+		<p>justify-content:flex-start</p>
+		<ul class="justi-start">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p>justify-content:flex-end</p>
+		<ul class="justi-end">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p>justify-content:center</p>
+		<ul class="justi-center">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p>justify-content:space-between</p>
+		<ul class="justi-between">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<p>justify-content:space-around</p>
+		<ul class="justi-around">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<h4>垂直对齐方式</h4>
+		<p>align-items:flex-start</p>
+		<ul class="item item-start">
+			<li><small>what do you mean</small></li>
+			<li><strong>what do you mean</strong></li>
+			<li><h2>what do you mean</h2></li>
+		</ul>
+		<p>align-items:flex-end</p>	
+		<ul class="item item-end">
+			<li><small>what do you mean</small></li>
+			<li><strong>what do you mean</strong></li>
+			<li><h2>what do you mean</h2></li>
+		</ul>
+		<p>align-items:center</p>
+		<ul class="item item-center">
+			<li><small>what do you mean</small></li>
+			<li><strong>what do you mean</strong></li>
+			<li><h2>what do you mean</h2></li>
+		</ul>
+		<p>align-items:baseline</p>	
+		<ul class="item item-base">
+			<li><small>what do you mean</small></li>
+			<li><strong>what do you mean</strong></li>
+			<li><h2>what do you mean</h2></li>
+		</ul>
+		<p>align-items:stretch</p>
+		<ul class="item item-stretch">
+			<li><small>what do you mean</small></li>
+			<li><strong>what do you mean</strong></li>
+			<li><h2>what do you mean</h2></li>
+		</ul>
+
+
+	</body>	
+</html>
