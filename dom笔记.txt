@@ -253,6 +253,35 @@ innerText					替换容器内文本
 
 outerText					替换容器文本，包括容器本身
 
+
+
+###DOM2,DOM3###
+----------------------------------------------------------------------------------------------------------
+
+#dom样式
+
+cssText						dom样式的text文本
+
+getComputedStyle(element.node,null)			取得计算后的样式（包括内联和外文件样式），第二个参数可传入伪类，如：after
+
+var myDiv = document.getElementById("myDiv");
+var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 
 
