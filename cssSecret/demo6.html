@@ -32,6 +32,19 @@
 				background-size: 75px 75px,75px 75px,
 								 25px 25px,25px 25px;
 			}
+			.box4{
+				background: #655;
+				background-image: radial-gradient(tan 30%,transparent 0);
+				background-size: 30px 30px;
+			}
+			.box5{
+				background: #655;
+				background-image: 
+					radial-gradient(tan 30%,transparent 0),
+					radial-gradient(tan 30%,transparent 0);
+				background-size: 30px 30px;
+				background-position: 0 0, 15px 15px;
+			}
 		</style>
 	</head>
 	<body>
@@ -43,5 +56,93 @@
 		<div class="box6"></div>
 		<div class="box7"></div>
 		<div class="box8"></div>
+
+		<div id="root">
+		  <h1 data-model="title"></h1>
+		  <div>
+		    <div data-model="user"></div>
+		    <ul data-list="todos">
+		      <li data-list-item="todos">
+		        <p data-class="todos:done" data-model="todos:creator"></p>
+		        <p data-model="todos:date"></p>
+		        <p data-model="todos:content"></p>
+		        <ul data-list="todos:members">
+		          <li data-list-item="todos:members">
+		            <span data-model="todos:members:name"></span>
+		          </li>
+		        </ul>
+		      </li>
+		    </ul>
+		  </div>
+		</div>
+
+		<script>
+			//MVVM
+			var myobj = {
+				name:'Anakin',
+				age:26,
+				friend:['Obiwang','Youda','Yundu','empror'],
+				details:{
+					type:'noSingleDog',
+					tag:['fff','000']
+				}
+			}			
+
+			let data = {
+				title: 'todo list',
+				user: 'mirone',
+				todos: [
+					{
+						creator: 'mirone',
+						content: 'write mvvm',
+						done: 'want do it',
+						time: '2017-05-02',
+						members: [
+							{
+								name:'Anakin'
+							}
+						]
+					}
+				]
+			}	
+
+			function scan(node){
+				if(!node.getAttribute('data-list')){
+					for(let i = 0;i<node.childElementCount;i++){
+						const _thisNode = node.childNodes[i];
+						parseModel(node)
+						parseClass(node)
+						parseEvent(node)
+						if(_thisNode.children.length) {
+							scan(_thisNode)
+						}
+					}	
+				}else{
+					parseList(node);
+				}
+			}
+
+			var arr = ['obiwang',28,'jedio',16000,'face with'];
+			function sui(a,b){
+				return Math.random() > 0.5 ? -1 : 1;
+			}
+
+			//真*随机
+			function randomSort(arr,newArr){
+				if(arr.length == 1){
+					newArr.push(arr[0]);
+					return newArr;
+				}
+				var random =Math.ceil(Math.random() * arr.length) - 1;
+				newArr.push(arr[random]);
+				arr.splice(random,1);	
+				return randomSort(arr,newArr);
+			}
+
+
+
+
+
+		</script>
 	</body>	
 </html>
