@@ -268,6 +268,45 @@ var myDiv = document.getElementById("myDiv");
 var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
 
 
+function getStyleSheet(ele){
+	return ele.sheet || ele.StyleSheet;
+}
+var link = document.getElementsByTagName("link")[0];
+var sheet = getStyleSheet(link);
+
+sheet.insertRule('body{color:red;}',0);			插入规则
+
+sheet.deleteRule(0);							删除规则
+
+
+#元素大小
+
+offsetLeft						 左外边框到包含元素的距离
+
+offsetTop						 右外边框到包含元素的距离
+
+offsetParent					 包含元素
+
+clientWidth						 内容宽度
+
+clientHeight					 内容高度
+
+scrollHeight					 滚动条高度
+
+scrollWidth						滚动条宽度
+
+scrollTop						被隐藏在元素上方的区域高度
+
+scrollLeft						被隐藏在元素左方的区域宽度
+
+
+
+
+
+
+
+
+
 
 
 
