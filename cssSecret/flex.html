@@ -124,13 +124,22 @@
 			/*项目属性*/		
 			
 			.order li:nth-child(1){
-				order: 1
+				order: 1;
 			}
 			.order li:nth-child(3){
 				order: 1;
 			}
 			.grow li{
 				flex-grow: 1;
+			}
+			.shrink{
+				flex-wrap: nowrap;
+			}
+			.shrink li{
+				flex-shrink: 0;
+			}
+			.basis li{
+				flex-basis: 300px;
 			}
 
 		</style>
@@ -348,13 +357,43 @@
 				<li>5</li>
 			</ul>
 			<h4>增长与缩短</h4>
-			<p>flex-grow:1;默认0</p>
+			<p>flex-grow:0</p>
+			<ul>
+				<li></li>
+			</ul>
+			<p>flex-grow:1;默认0</p>			
 			<ul class="grow">
 				<li>1</li>
 				<li>2</li>
 			</ul>
+			<p>flex-shrink:1;默认可以缩短</p>			
 			<ul>
-				<li></li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ul>
+			<p>flex-shrink:0;不可缩短</p>			
+			<ul class="shrink">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ul>
+			<p>flex-basis:auto;根据内容调节宽度</p>
+			<ul class="basis">
+				<li>1</li>
+				<li>2</li>
+				<li>黄口小儿，可听过将军名号？</li>
+				<li>脱</li>
 			</ul>
 		</div>
 	</body>	
