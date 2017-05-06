@@ -1,6 +1,7 @@
 <!document HTML>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>透明边框</title>
 		<style>
 			body{
@@ -23,10 +24,19 @@
 				outline-offset: -10px;
 				box-shadow: 0px 0px 10px 0px #f00;
 			}
+			.box3{
+				font-size: 50px;
+				font-weight: bold;
+				color: transparent;
+				background: url(images/SouthMoravian.jpg) no-repeat;
+				background-size: cover;
+				-webkit-background-clip: text;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="box1"></div>
 		<div class="box2"></div>
+		<div class="box3">Hello World</div>
 	</body>	
 </html>
