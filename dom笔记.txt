@@ -300,8 +300,32 @@ scrollTop						被隐藏在元素上方的区域高度
 scrollLeft						被隐藏在元素左方的区域宽度
 
 
+#遍历
 
+document.createNodeIterator();
 
+nextNode();								下一个节点
+
+previousNode();							上一个节点
+
+document.createTreeWalker();
+
+parentNode();							父级节点
+
+firstChild();							第一个子节点
+
+lastChild();							最后一个子节点
+
+nextSibling();							下一个兄弟元素
+
+previousSibling();						上一个兄弟元素
+
+var iterator = document.createNodeIterator(root, NodeFilter.SHOW_ELEMENT,filter, false);
+var node = iterator.nextNode();
+while(node !== null){
+	alert(node.tagName);
+	node = iterator.nextNode();
+}
 
 
 
