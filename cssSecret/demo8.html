@@ -1,0 +1,79 @@
+<!document HTML>
+<html>
+	<head>
+		<title>连续的图像边框</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;				
+			}
+			.box1{
+				padding:1em;
+				border:1em solid transparent;
+				background: linear-gradient(white,white),url(images/SouthMoravian.jpg);
+				background-size: cover;
+				background-clip: padding-box,border-box;
+				background-origin: border-box;
+			}
+			.box2{
+				background: linear-gradient(45deg,#655 25%,#58a 0,#58a 50%,#655 0,#655 75%,#58a 0);
+				background-size: 30px 30px;
+			}
+			.box3{
+				background: repeating-linear-gradient(45deg,#fb3,#fb3 15px,#58a 0,#58a 30px);
+			}
+			.box4{
+				padding: 1em;
+				border: 1em solid transparent;
+				background: 
+					linear-gradient(white,white) padding-box,
+					repeating-linear-gradient(-45deg,#58a,#58a 12.5%,transparent 0,transparent 25%,red 0,red 37.5%,transparent 0,transparent 50%) 0 / 5em 5em;
+			}
+			.box5{
+				padding: 1em;
+				border: 16px solid transparent;
+				border-image: 16 repeating-linear-gradient(-45deg,red,red 1em,transparent 0,transparent 2em,#58a 0,#58a 3em,transparent 0,transparent 4em);
+			}
+			.box6{
+				padding: 1em;
+				border: 1em solid transparent;
+				background: 
+				    linear-gradient(white,white) padding-box,
+				    repeating-linear-gradient(-45deg,#58a,#58a 12.5%,transparent 0,transparent 25%,red 0,red 37.5%,transparent 0,transparent 50%) 0 / 5em 5em;
+				animation: ants 6s linear infinite;
+			}
+			@keyframes ants { to { background-position: 100% } } 
+			.marching-ants { 
+				padding: 1em; 
+				border: 1px solid transparent;
+				background: linear-gradient(white, white) padding-box, repeating-linear-gradient(-45deg, black 0, black 25%, white 0, white 50% ) 0 / .6em .6em; 
+				animation: ants 12s linear infinite; 
+			}
+			.wrap{
+				padding: 1em;
+				background: url(images/SouthMoravian.jpg);
+				background-size: cover;
+			}
+			.wrap > div{
+				margin: 0;
+				background: white;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+		<div class="box5"></div>
+		<div class="box6"></div>
+		<div class="marching-ants"></div>
+		<div class="wrap">
+			<div></div>
+		</div>		
+	</body>	
+</html>
