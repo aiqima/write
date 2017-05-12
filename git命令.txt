@@ -57,6 +57,8 @@ git push -u [origin.name] master				将本地内容推送到远程（第一次远程仓为空 使用 
 
 git push [origin.name] master 					将本地内容推送到远程
 
+git pull 										从仓库更新代码到本地
+
 git remote rm [origin.name]						删除远程仓
 
 git clone git@github.com:aiqima/start.git		克隆远程仓库
