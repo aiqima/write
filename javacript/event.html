@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>event</title>
+	</head>
+	<body>
+		<section>
+			<p id="p1" title="right here waiting" data-title="cll">whatever you go,whatever you do,I will be right here waiting for you</p>
+		</section>
+		<div>
+			<p title="hello">I love you more than I can say</p>
+		</div>
+		<strong title="指如削葱根，口如含朱丹">孔雀东南飞，五里一徘徊</strong>
+		<script>
+			var btn = document.getElementById("p1");
+			//事件一级
+			btn.onclick = function(event){
+				alert(event.target.innerHTML);
+			}
+			//事件二级
+			var cont = document.querySelector("div p");
+			//事件绑定
+			cont.addEventListener('click',handler,false);
+			function handler(e){
+				var v = e.target.title;
+				alert(v);
+			}
+			//事件取消
+			cont.removeEventListener('click',handler,false);
+			
+			//attachEvent	IE8绑定事件
+			//detachEvent	IE8取消事件
+			
+			//跨浏览器
+			var EventUitl = {
+				addHandler: function(element,type,handler){
+					if(element.addEventListener){
+						element.addEventListener(type,handler,false);
+					}else if(element.attachEvent){
+						element.attachEvent("on" + type,handler);
+					}else{
+						element["on" + type] = handler;
+					}
+				},
+				removeHeader: function(element,type,handler){
+					if(element.removeEventListener){
+						element.removeEventListener(type,handler,false);
+					}else if(element.detachEvent){
+						element.detachEvent("on" + type,handler);
+					}else{
+						element["on" + type] = null;
+					}
+				}
+			}
+			
+			var strong = document.querySelector("strong");
+			EventUitl.addHandler(strong,'click',handler);
+			EventUitl.removeHeader(strong,'click',handler);
+			
+		</script>
+		
+	</body>
+</html>
