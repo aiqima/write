@@ -124,8 +124,28 @@
 			conputer1.name = '变形金刚';
 			console.log(conputer1.hasOwnProperty('name'));
 
-			
+			//更简单的原型链
+			function Friend(){}
+			Friend.prototype = {
+				constructor: Friend,
+				name: 'm',
+				sex: 'man',
+				type: 'good friend'
+			}
+			var lan = new Friend();
 
+			//混合模式
+			function Monkey(){
+				this.name = 'react',
+				this.age = 10,
+				this.like = 'banana'
+			}
+			Monkey.prototype = {
+				say: function(){
+					return 'I\'m ' + this.name;
+				}
+			}
+			var momo = new Monkey();
 
 
 
