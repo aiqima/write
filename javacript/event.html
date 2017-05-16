@@ -12,6 +12,11 @@
 			<p title="hello">I love you more than I can say</p>
 		</div>
 		<strong title="指如削葱根，口如含朱丹">孔雀东南飞，五里一徘徊</strong>
+		
+		<div>
+			<a href="http://www.baidu.com" id="link">点击进入</a>
+		</div>
+		
 		<script>
 			var btn = document.getElementById("p1");
 			//事件一级
@@ -32,7 +37,7 @@
 			//attachEvent	IE8绑定事件
 			//detachEvent	IE8取消事件
 			
-			//跨浏览器
+			//跨浏览器			
 			var EventUitl = {
 				addHandler: function(element,type,handler){
 					if(element.addEventListener){
@@ -51,12 +56,47 @@
 					}else{
 						element["on" + type] = null;
 					}
+				},
+				getEvent: function(event){
+					return event ? event : window.event;
+				},
+				getTarget: function(event){
+					return event.target || event.srcElement;
+				},				
+				preventDefaul: function(event){
+					if(event.preventDefault){
+						event.preventDefault();
+					}else{
+						event.returnValue = false;
+					}
+				},
+				stopPropagetion: function(event){
+					if(event.stopPropagation){
+						event.stopPropagation();
+					}else{
+						event.cancelBubble = false;
+					}
 				}
 			}
 			
 			var strong = document.querySelector("strong");
 			EventUitl.addHandler(strong,'click',handler);
 			EventUitl.removeHeader(strong,'click',handler);
+			
+			//事件对象
+			var links = document.getElementById("link");
+			document.body.addEventListener('click',function(e){
+				alert('你点击了页面');
+			},false);
+			links.addEventListener('click',function(event){
+				event = EventUtil.getEvent(event);
+				//event.stopPropagation();		//阻止事件传播
+				//event.preventDefault();			//阻止默认行为
+				EventUitl.preventDefaul(event);
+				var title = event.type;
+				var v = event.target.text;				
+				alert(v);
+			},false);
 			
 		</script>
 		
