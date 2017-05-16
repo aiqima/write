@@ -1,0 +1,72 @@
+<!document HTML>
+<html>
+	<head>
+		<title>自适应椭圆</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;				
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.box1{
+				background: yellowgreen;
+				border-radius: 50%;
+			}
+			.box2{
+				background: yellowgreen;
+				border-radius: 100px / 75px;
+			}
+			.box3{
+				background: yellowgreen;
+				border-radius: 50% / 100% 100% 0 0;
+			}
+			.box4{
+				background: yellowgreen;
+				border-radius: 50% / 0 0 100% 100%;
+			}
+			.box5{
+				width: 100px;
+				background: yellowgreen;
+				border-radius: 100% 0 0 100% / 50% 0 0 50%;
+			}
+			.box6{
+				width: 100px;
+				background: yellowgreen;
+				border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+			}
+			.box7{
+				height: 300px;
+				background: yellowgreen;
+				border-radius: 0 100% 0 0 / 0 100% 0 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+		<section class="fix">
+			<div class="box5 l"></div>
+			<div class="box6 l"></div>
+		</section>
+		<div class="box7"></div>
+				
+	</body>	
+</html>
