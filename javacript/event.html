@@ -3,6 +3,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>event</title>
+		<style>
+			body{
+				height: 1000px;
+			}
+		</style>
 	</head>
 	<body>
 		<section>
@@ -16,6 +21,7 @@
 		<div>
 			<a href="http://www.baidu.com" id="link">点击进入</a>
 		</div>
+		<input type="text" id="comon" />
 		
 		<script>
 			var btn = document.getElementById("p1");
@@ -37,67 +43,110 @@
 			//attachEvent	IE8绑定事件
 			//detachEvent	IE8取消事件
 			
-			//跨浏览器			
-			var EventUitl = {
-				addHandler: function(element,type,handler){
-					if(element.addEventListener){
+			//跨浏览器
+			var EventUtil = {
+				addHandler: function(element,type,handler){						//绑定事件
+					if(element.addEventListener){								//firefox
 						element.addEventListener(type,handler,false);
-					}else if(element.attachEvent){
-						element.attachEvent("on" + type,handler);
+					}else if(element.attachEvent){								//IE8
+						element.attachEvent("on"+type,handler);
 					}else{
-						element["on" + type] = handler;
+						element["on"+type] = handler;							//DOM一级
 					}
 				},
-				removeHeader: function(element,type,handler){
-					if(element.removeEventListener){
+				removeHandler: function(element,type,handler){					//移除事件
+					if(element.removeEventListener){							//firefox
 						element.removeEventListener(type,handler,false);
-					}else if(element.detachEvent){
-						element.detachEvent("on" + type,handler);
+					}else if(element.detachEvent){								//IE8
+						element.detachEvent("on"+type,handler);
 					}else{
-						element["on" + type] = null;
+						element["on"+type] = null;								//DOM一级
 					}
 				},
-				getEvent: function(event){
+				getEvent: function(event){										//获取事件对象
 					return event ? event : window.event;
 				},
-				getTarget: function(event){
+				getTarget: function(event){										//获取事件目标
 					return event.target || event.srcElement;
-				},				
-				preventDefaul: function(event){
-					if(event.preventDefault){
-						event.preventDefault();
-					}else{
-						event.returnValue = false;
-					}
 				},
-				stopPropagetion: function(event){
-					if(event.stopPropagation){
+				stopPropagetion: function(event){								//阻止事件传播
+					if(event.stopPropagation){									//firefox
 						event.stopPropagation();
 					}else{
-						event.cancelBubble = false;
+						event.cancelBubble = true;								//IE8
+					}
+				},
+				preventDefault: function(event){								//阻止默认行为
+					if(event.preventDefault){
+						event.preventDefault();									//firefox
+					}else{
+						event.returnValue = false;								//IE8
 					}
 				}
+				
 			}
 			
 			var strong = document.querySelector("strong");
-			EventUitl.addHandler(strong,'click',handler);
-			EventUitl.removeHeader(strong,'click',handler);
+			EventUtil.addHandler(strong,'click',handler);
+			EventUtil.removeHandler(strong,'click',handler);
 			
 			//事件对象
 			var links = document.getElementById("link");
 			document.body.addEventListener('click',function(e){
-				alert('你点击了页面');
+				//alert('你点击了页面');
 			},false);
 			links.addEventListener('click',function(event){
 				event = EventUtil.getEvent(event);
-				//event.stopPropagation();		//阻止事件传播
+				//event.stopPropagation();			//阻止事件传播
 				//event.preventDefault();			//阻止默认行为
-				EventUitl.preventDefaul(event);
+				EventUtil.stopPropagetion(event);
+				EventUtil.preventDefault(event);
 				var title = event.type;
 				var v = event.target.text;				
 				alert(v);
 			},false);
 			
+			
+			//事件类型
+			
+			EventUtil.addHandler(window,'load',function(){						//加载
+				var images = document.createElement('img');
+				EventUtil.addHandler(images,'load',function(event){
+					event = EventUtil.getEvent(event);
+					alert(EventUtil.getTarget(event).src);
+				},false);
+				images.src = 'http://www.jjhvip.com//template/default/statics/images/logo.png';
+				document.body.appendChild(images);
+			},false);
+			
+			EventUtil.addHandler(window,'upload',function(event){				//卸载
+				alert('Upload');
+			},false);
+			
+			EventUtil.addHandler(window,'resize',function(event){				//窗口大小
+				alert('窗口大小已改变');
+			},false);
+			
+			EventUtil.addHandler(window,'scroll',function(event){				//滚动
+				alert('滚动了');
+			},false);
+			
+			var comon = document.getElementById("comon");
+			EventUtil.addHandler(comon,'focus',function(event){
+				document.body.style.backgroundColor = '#000';
+			},false);
+			EventUtil.addHandler(comon,'blur',function(event){
+				event = EventUtil.getEvent(event);
+				var v = EventUtil.getTarget(event).value;
+				alert(v);
+			},false);
+			
+			var cheight = document.body.clientHeight;
+			var oheight = document.body.offsetHeight;
+			var sheight = document.body.scrollHeight;
+			console.log(cheight);
+			console.log(oheight);
+			console.log(sheight);
 		</script>
 		
 	</body>
