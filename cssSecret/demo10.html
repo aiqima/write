@@ -1,0 +1,62 @@
+<!document HTML>
+<html>
+	<head>
+		<title>平行四边形</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 100px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.box1{
+				background: #58a;
+				transform: skewX(-45deg);
+			}
+			.box2{
+				background: #58a;
+				transform: skewX(-45deg);
+			}
+			.box2 p{
+				transform: skewX(45deg);
+			}
+			.box3{
+				position: relative;
+				color: red;
+			}
+			.box3:before{
+				content: '';
+				background: #58a;
+				transform: skewX(-45deg);
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"><p>Hello world</p></div>	
+		<div class="box2"><p>Hello world</p></div>	
+		<div class="box3">Hello world</div>	
+	</body>	
+</html>
