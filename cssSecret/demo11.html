@@ -1,0 +1,95 @@
+<!document HTML>
+<html>
+	<head>
+		<title>菱形图片</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.box1{
+				overflow: hidden;
+				transform: rotate(-45deg);
+			}
+			.box1 > img{
+				max-width: 100%;
+				transform: rotate(45deg) scale(1.42);
+			}
+			.polygon{
+				width: 300px;
+				clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);
+				transition: 1s clip-path;
+			}
+			.polygon:hover{
+				clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+			}
+			.circle{
+				width: 300px;
+				clip-path: circle(34% at 50% 50%);
+			}
+			.triangle{
+				width: 300px;
+				clip-path: polygon(0 100%,50% 0,100% 100%);
+			}
+			.ellipse{
+				width: 300px;
+				clip-path: ellipse(50% 40% at 50% 50%);
+			}
+			.anima{
+				width: 300px;
+				clip-path: circle(34% at 50% 50%);
+				animation: deformation 5s ease-in infinite;
+			}
+			@keyframes deformation{
+				0%{
+					clip-path: ellipse(50% 40% at 50% 50%);
+				}
+				25%{
+					clip-path: polygon(0 50%,50% 0,100% 50%,50% 100%);
+				}
+				50%{
+					clip-path: polygon(0 100%,50% 0,100% 100%);
+				}
+				75%{
+					clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+				}
+				100%{
+					clip-path: circle(34% at 50% 50%);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<img src="images/SouthMoravian.jpg" />
+		</div>
+		<img class="polygon" src="images/SouthMoravian.jpg" />
+		<br />
+		<img class="circle" src="images/SouthMoravian.jpg" />
+		<br />
+		<img class="triangle" src="images/SouthMoravian.jpg" />
+		<br />
+		<img class="ellipse" src="images/SouthMoravian.jpg" />
+		<br />
+		<img class="anima" src="images/SouthMoravian.jpg" />
+	</body>	
+</html>
