@@ -7,6 +7,14 @@
 			body{
 				height: 1000px;
 			}
+			#myDiv{
+				height: 100px;
+				width: 100%;
+				display: block;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -18,10 +26,14 @@
 		</div>
 		<strong title="指如削葱根，口如含朱丹">孔雀东南飞，五里一徘徊</strong>
 		
-		<div>
+		<div id="myDiv">
 			<a href="http://www.baidu.com" id="link">点击进入</a>
 		</div>
-		<input type="text" id="comon" />
+		<div>
+			<input type="text" id="comon" />
+		</div>
+		
+		<br />
 		
 		<script>
 			var btn = document.getElementById("p1");
@@ -108,7 +120,7 @@
 			
 			
 			//事件类型
-			
+			//ui
 			EventUtil.addHandler(window,'load',function(){						//加载
 				var images = document.createElement('img');
 				EventUtil.addHandler(images,'load',function(event){
@@ -128,7 +140,7 @@
 			},false);
 			
 			EventUtil.addHandler(window,'scroll',function(event){				//滚动
-				alert('滚动了');
+				//alert('滚动了');
 			},false);
 			
 			var comon = document.getElementById("comon");
@@ -138,8 +150,18 @@
 			EventUtil.addHandler(comon,'blur',function(event){
 				event = EventUtil.getEvent(event);
 				var v = EventUtil.getTarget(event).value;
-				alert(v);
+				document.body.style.backgroundColor = '#fff';
 			},false);
+			
+			//鼠标与滚动
+			var div = document.querySelector("#myDiv");
+			EventUtil.addHandler(div,'click',function(event){
+				event = EventUtil.getEvent(event);
+				alert('内容位置' + 'x:' + event.clientX + ',' + 'y:' +event.clientY);
+				alert('浏览器位置' + 'x:' + event.pageX + ',' + 'y:' + event.pageY);
+				alert('屏幕位置' + 'x:' + event.screenX + ',' + 'y:' + event.screenY);
+			},false);
+			
 			
 			var cheight = document.body.clientHeight;
 			var oheight = document.body.offsetHeight;
