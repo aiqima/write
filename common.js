@@ -74,6 +74,48 @@
 
 // 使用rem 最好文字都指定字体大小  不然会继承html的font-size
 
+//事件选择器
+var EventUtil = {
+	addHandler: function(element,type,handler){							//绑定事件
+		if(element.addEventListener){
+			element.addEventListener(type,handler,false);
+		}else if(element.attachEvent){
+			element.attachEvent("on"+type,handler);			
+		}else{
+			element["on"+type] = handler;			
+		}
+	},
+	removeHandler: function(element,type,handler){						//移除事件
+		if(element.removeEventListener){
+			element.removeEventListener(type,handler,false);
+		}else if(element.detachEvent){
+			element.detachEvent("on"+type,handler);			
+		}else{
+			element["on"+type] = null;
+		}
+	},
+	getEvent: function(event){											//获取事件对象
+		return event ? event : window.event;
+	},
+	getTarget: function(event){											//获取事件目标
+		return event.target || event.srcElement;
+	},
+	stopPropagation: function(event){									//阻止事件传播
+		if(event.stopPropagation){
+			event.stopPropagation();
+		}else{
+			event.cancelBubble = true;
+		}
+	},
+	preventDefault: function(event){									//阻止默认行为
+		if(event.preventDefault){
+			event.preventDefault();
+		}else{
+			event.returnValue = false;
+		}
+	}
+}
+
 //提示框组件
 function tipBox(inner){
 	//$('#tipText').innerHTML = inner;
