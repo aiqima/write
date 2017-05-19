@@ -1,0 +1,72 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			body{
+				background: black;
+			}
+			.box1{
+				background: linear-gradient(45deg,transparent 15px,rgba(255,255,255,1) 0);				
+			}
+			.box3{
+				background: 
+					linear-gradient(45deg,transparent 15px,white 0) no-repeat,
+					linear-gradient(-45deg,transparent 15px,#58a 0) no-repeat;
+				background-size: 50% 100%,50% 100%;
+				background-position: 0 0,100%;
+			}
+			.box2{
+				background: radial-gradient(red,black);
+				border-radius: 50%;
+				animation: breath 5s infinite ease-in;
+			}
+			@keyframes breath{
+				0%{
+					box-shadow: 0 0 1px 0 red;
+				}
+				25%{
+					box-shadow: 0 0 15px 0 red;
+				}
+				50%{
+					box-shadow: 0 0 30px 0 red;
+				}
+				75%{
+					box-shadow: 0 0 15px 0 red;
+				}
+				100%{
+					box-shadow: 0 0 3px 0 red;
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box3"></div>
+		<div class="box2"></div>
+	</body>	
+</html>
