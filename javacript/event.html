@@ -162,6 +162,22 @@
 				alert('屏幕位置' + 'x:' + event.screenX + ',' + 'y:' + event.screenY);
 			},false);
 			
+			//HTML5事件
+			EventUtil.addHandler(window,'contextmenu',function(event){					//禁用上下文菜单
+				event = EventUtil.getEvent(event);
+				EventUtil.preventDefault(event);
+			},false);
+			EventUtil.addHandler(window,'beforeunload',function(event){					//页面卸载前事件
+				event = EventUtil.getEvent(event);
+				var message = '如果你离开我，我真的会想你';
+				event.returnValue = message;
+				confirm('你真的要离开我吗？')
+				return message;
+			});
+			EventUtil.addHandler(window,'hashchange',function(event){					//url参数变化事件
+				alert('old url:' + event.oldURL + '\n new URL' + event.newURL);
+			},false);
+			
 			
 			var cheight = document.body.clientHeight;
 			var oheight = document.body.offsetHeight;
