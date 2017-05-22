@@ -35,6 +35,14 @@
 		
 		<br />
 		
+		<ul id="myList">
+			<li id="clickLi_1">Hello world</li>
+			<li id="clickLi_2">Hello world</li>
+			<li id="clickLi_3">Hello world</li>
+			<li id="clickLi_4">Hello world</li>
+			<li id="clickLi_5">Hello world</li>
+		</ul>
+		
 		<script>
 			var btn = document.getElementById("p1");
 			//事件一级
@@ -229,6 +237,38 @@
 			document.addEventListener('gesturestart',handleGesture,false);
 			document.addEventListener('gesturesend',handleGesture,false);
 			document.addEventListener('gesturechange',handleGesture,false);
+			
+			
+			//事件委托
+			var list = document.getElementById("myList");
+			EventUtil.addHandler(list,'click',function(event){
+				event = EventUtil.getEvent(event);
+				var tg = EventUtil.getTarget(event);
+				switch(tg.id){
+					case "clickLi_1":
+						tg.title = 'email';
+						break;
+					case "clickLi_2":
+						tg.innerHTML = 'balbalbala';
+						break;
+					case "clickLi_3":
+						tg.innerHTML = 'lantrem';
+						break;
+					case "clickLi_4":
+						tg.style.color = 'red';
+						break;
+					case "clickLi_5":
+						tg.style.backgroundColor = 'green';
+						break;
+				}
+				
+				
+			},false);
+			
+			//事件模拟
+			var event = document.createEvent("MouseEvent");
+			event.initMouseEvent('click',true,true,document.defaultView,0,0,0,0,false,false,false,false,0,null);
+			cont.dispatchEvent(event);
 			
 			
 			
