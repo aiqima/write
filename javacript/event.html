@@ -21,7 +21,7 @@
 		<section>
 			<p id="p1" title="right here waiting" data-title="cll">whatever you go,whatever you do,I will be right here waiting for you</p>
 		</section>
-		<div>
+		<div id="output">
 			<p title="hello">I love you more than I can say</p>
 		</div>
 		<strong title="指如削葱根，口如含朱丹">孔雀东南飞，五里一徘徊</strong>
@@ -171,12 +171,65 @@
 				event = EventUtil.getEvent(event);
 				var message = '如果你离开我，我真的会想你';
 				event.returnValue = message;
-				confirm('你真的要离开我吗？')
+				confirm('你真的要离开我吗？');
 				return message;
 			});
 			EventUtil.addHandler(window,'hashchange',function(event){					//url参数变化事件
 				alert('old url:' + event.oldURL + '\n new URL' + event.newURL);
 			},false);
+			
+			//设备事件
+			EventUtil.addHandler(window,'orientationchange',function(event){			//屏幕旋转事件
+				console.log(event.orientation);
+			},false);
+			EventUtil.addHandler(window,'MozOrientation',function(event){
+				alert('X:' + event.x + 'Y:' + event.y + 'Z:' + event.z);
+			},false);
+			EventUtil.addHandler(window,'deviceorientation',function(event){
+				//alert(event.alpha);
+			},false);
+			
+			//设备触摸
+			function handleTouche(event){
+				if(event.touches.length === 1){						//只触摸一次
+					var output = document.getElementById("output");
+					switch(event.type){
+						case "touchstart" :
+							output.innerHTML = 'Touch Start (' + event.touches[0].clientX + ',' + event.touches[0].clientY + ')';
+							break;
+						case "touchend" :
+							output.innerHTML += '<br />Touch End (' + event.touches[0].clientX + ',' + event.touches[0].clientY + ')';
+							break;
+						case "touchmove" :
+							event.preventDefault();
+							output.innerHTML += '<br />Touch Move (' + event.changedTouches[0].clientX + ',' + event.changedTouches[0].clientY + ')';
+							break;
+					}
+				}
+			}
+			//设备手势
+			function handleGesture(event){
+				var div = document.getElementById("myDiv");
+				switch(event.type){
+					case "gesturestart":
+						div.innerHTML = 'rotation: ' + event.rotation + ' scale: ' + event.scale;
+						break;
+					case "gestureend":
+						div.innerHTML += '<br />rotation: ' + event.rotation + ' scale: ' + event.scale;
+						break;
+					case "gesturechange":
+						div.innerHTML += '<br />rotation: ' + event.rotation + ' scale: ' + event.scale;
+				}
+			}
+			
+			EventUtil.addHandler(document,'touchstart',handleTouche,false);
+			EventUtil.addHandler(document,'touchend',handleTouche,false);
+			EventUtil.addHandler(document,'touchmove',handleTouche,false);
+			
+			document.addEventListener('gesturestart',handleGesture,false);
+			document.addEventListener('gesturesend',handleGesture,false);
+			document.addEventListener('gesturechange',handleGesture,false);
+			
 			
 			
 			var cheight = document.body.clientHeight;
