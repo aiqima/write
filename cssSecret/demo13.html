@@ -1,0 +1,90 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.box1{
+				height: 100px;
+				background: #58a;
+				transform: perspective(.5em) rotateX(5deg);
+			}
+			.box2{
+				height: 100px;
+				position: relative;
+			}
+			.box2:before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				background: #58a;
+				transform: scaleY(2) perspective(.5em) rotateX(5deg);
+				transform-origin: bottom;
+			}
+			nav a{
+				font-size: 18px;
+				color: black;
+				text-decoration: none;
+				position: relative;
+				display: inline-block;
+				padding:.3em 1em 0;
+			}
+			nav > a:before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				background: #ccc;
+				background-image: linear-gradient(hsla(0,0%,100%,.6),hsla(0,0%,100%,0));
+				border: 1px solid rgba(0,0,0,.4);
+				border-bottom: none;
+				border-radius: .5em .5em 0 0;
+				box-shadow: 0 .15em white inset;
+				transform: perspective(.5em) rotateX(5deg);
+				transform-origin: bottom;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box1">Hello world</div>	
+		<div class="box2">Hello world</div>	
+		<br />
+		<br />
+		<nav>
+			<a>Home</a>
+			<a>Projects</a>
+			<a>About</a>
+		</nav>
+		
+	</body>	
+</html>
