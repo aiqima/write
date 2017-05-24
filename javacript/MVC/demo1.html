@@ -6,54 +6,50 @@
 				
 	</head>
 	<body>
+		<div id="app">			
+			<h1>姓名：{{Name}}</h1>
+			<h1>年龄：{{Age}}</h1>
+			<h1>学校：{{School}}</h1>
+			<input type="text" name="name" v-model="Name" />
+		</div>
+		<div id="app-2">
+			<ol>
+				<!--代办事项-->
+				<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+			</ol>
+		</div>
+		<script src="vue.js"></script>
 		<script>
-			var users = {
-				name: 'Obiwang',
-				age: 28,
-				type: 'jedi',
-				foo: 'write less do more'
+			//Model
+			var data = {
+				Name:'Anakin',
+				Age:28,
+				School:'Jidi'
 			}
-			var Person = function(name){
-				this.name = name;
-			}
-			var alice = new Person('alice');
 			
-			var Class = function(){
-				var klass = function(){
-					this.init.apply(this,arguments);
-				};
-				klass.prototype.init = function(){};
-				return klass;
-			};
-			var Person = new Class;
-			Person.prototype.init = function(){
-				//基于Person的实例做初始化
-			};
-			// 用法
-			var person = new Person;
+			//viewModel
+			var vue = new Vue({
+				el:'#app',
+				data:data
+			});
 			
-			//给类添加函数
-			Person.find = function(id){
-				
-			};
-			var person = Person.find(1);
+			Vue.component('todo-item',{
+				props: ['todo'],
+				template:'<li>{{todo.text}}</li>'
+			})
 			
-			Person.prototype.breath = function(){};
-			var person new Person;
-			person.breath();
-			Person.fn = Person.prototype;
+			var app2 = new Vue({
+				el:'#app-2',
+				data:{
+					groceryList:[
+						{text:'蔬菜'},
+						{text:'水果'},
+						{text:'奶制品'}
+					]
+				}
+			});
 			
-			var Person = new Class;
-			//直接给类添加静态方法
-			Person.find = function(id){};
-			
-			//这样我们可以直接调用它们
-			var person = Person.find(1);
-			
-			
-			
-			
-			
+						
 		</script>
 	</body>	
 </html>
