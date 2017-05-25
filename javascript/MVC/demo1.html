@@ -1,0 +1,150 @@
+<!document HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MVC和类</title>
+		<style>
+			body:after{
+				
+			}
+		</style>		
+	</head>
+	<body>
+		<h3>双向绑定</h3>
+		<hr />
+		<div id="app">			
+			<p>姓名：{{Name}}</p>
+			<p>年龄：{{Age}}</p>
+			<p>学校：{{School}}</p>
+			<input type="text" name="name" v-model="Name" />
+		</div>
+		<h3>自定义组件</h3>
+		<div id="app-2">
+			<ol>
+				<!--代办事项-->
+				<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+			</ol>
+		</div>
+		<h3>v-text,v-html指令</h3>
+		<hr />
+		<div id="app-3">
+			<p>姓名：<label v-text="Name"></label></p>
+			<p>姓名：{{Name}}</p>
+			<span v-html="Age">年龄：</span>
+		</div>
+		<h3>v-model指令</h3>
+		<hr />
+		<div id="app-4">
+			<p>编辑姓名：<input type="text" v-model="Name" /></p>
+			<p>姓名：{{Name}}</p>
+			<p>编辑备注：<textarea v-model="Remark"></textarea></p>
+			<p>{{Remark}}</p>
+			<input type="checkbox" id="basketball" value="篮球" v-model="Hobby"  />
+			<label for="basketball">篮球</label>
+			<input type="checkbox" id="football" value="足球" v-model="Hobby"  />
+			<label for="football">足球</label>
+			<input type="checkbox" id="running" value="跑步" v-model="Hobby"  />
+			<label for="running">跑步</label>
+			<br />
+			<p>学生爱好：{{ Hobby }}</p>
+			<p>户籍：{{ Huji }}</p>
+			<select v-model="Huji">
+				<option>湖南</option>
+				<option>广东</option>
+				<option>北京</option>
+			</select>			
+		</div>
+		<h3>v-if,v-else指令</h3>
+		<hr />
+		<div id="app-5">
+			<p>白天或黑夜：<span v-if="time > 6">白天</span><span v-else>黑夜</span></p>
+		</div>
+		<h3>v-show</h3>
+		<hr />
+		<div id="app-6">
+			<p v-show="blue">蓝色</p>
+			<p v-show="white">白色</p>
+		</div>
+		<div id="app-7">
+			<ul>
+				<li v-for="value in values">姓名：{{value.name}}，年龄：{{value.age}}</li>
+			</ul>
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			//Model
+			var data = {
+				Name:'Anakin',
+				Age:28,
+				School:'Jidi'
+			}
+			
+			//viewModel
+			var vue = new Vue({
+				el:'#app',
+				data:data
+			});
+			
+						
+			Vue.component('todo-item',{
+				props:['todo'],
+				template:'<li>{{todo.text}}</li>'
+			})
+			
+			var app2 = new Vue({
+				el:'#app-2',
+				data:{
+					groceryList:[
+						{text:'蔬菜'},
+						{text:'水果'},
+						{text:'肉类'}
+					]
+				}
+			});
+			
+			//Vue 指令
+			var app3 = new Vue({
+				el:'#app-3',
+				data:{
+					Name:'小红',
+					Age:'<label>22</label>',
+				}
+			})
+			
+			var app4 = new Vue({
+				el:'#app-4',
+				data:{
+					Name:'Obiwang',
+					Remark:'xxx',
+					Hobby:[],
+					Huji:''
+				}
+			});
+			
+			var app5 = new Vue({
+				el:"#app-5",
+				data:{
+					time: 9
+				}
+			});
+			
+			var app6 = new Vue({
+				el:"#app-6",
+				data:{
+					blue:true,
+					white:false
+				}
+			});
+			
+			var app7 = new Vue({
+				el:'#app-7',
+				data:{
+					values:[{name:'a',age:10},{name:'b',age:12}]
+				}					
+			})
+			
+						
+		</script>
+	</body>	
+</html>

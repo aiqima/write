@@ -1,0 +1,284 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>event</title>
+		<style>
+			body{
+				height: 1000px;
+			}
+			#myDiv{
+				height: 100px;
+				width: 100%;
+				display: block;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<p id="p1" title="right here waiting" data-title="cll">whatever you go,whatever you do,I will be right here waiting for you</p>
+		</section>
+		<div id="output">
+			<p title="hello">I love you more than I can say</p>
+		</div>
+		<strong title="指如削葱根，口如含朱丹">孔雀东南飞，五里一徘徊</strong>
+		
+		<div id="myDiv">
+			<a href="http://www.baidu.com" id="link">点击进入</a>
+		</div>
+		<div>
+			<input type="text" id="comon" />
+		</div>
+		
+		<br />
+		
+		<ul id="myList">
+			<li id="clickLi_1">Hello world</li>
+			<li id="clickLi_2">Hello world</li>
+			<li id="clickLi_3">Hello world</li>
+			<li id="clickLi_4">Hello world</li>
+			<li id="clickLi_5">Hello world</li>
+		</ul>
+		
+		<script>
+			var btn = document.getElementById("p1");
+			//事件一级
+			btn.onclick = function(event){
+				alert(event.target.innerHTML);
+			}
+			//事件二级
+			var cont = document.querySelector("div p");
+			//事件绑定
+			cont.addEventListener('click',handler,false);
+			function handler(e){
+				var v = e.target.title;
+				alert(v);
+			}
+			//事件取消
+			cont.removeEventListener('click',handler,false);
+			
+			//attachEvent	IE8绑定事件
+			//detachEvent	IE8取消事件
+			
+			//跨浏览器
+			var EventUtil = {
+				addHandler: function(element,type,handler){						//绑定事件
+					if(element.addEventListener){								//firefox
+						element.addEventListener(type,handler,false);
+					}else if(element.attachEvent){								//IE8
+						element.attachEvent("on"+type,handler);
+					}else{
+						element["on"+type] = handler;							//DOM一级
+					}
+				},
+				removeHandler: function(element,type,handler){					//移除事件
+					if(element.removeEventListener){							//firefox
+						element.removeEventListener(type,handler,false);
+					}else if(element.detachEvent){								//IE8
+						element.detachEvent("on"+type,handler);
+					}else{
+						element["on"+type] = null;								//DOM一级
+					}
+				},
+				getEvent: function(event){										//获取事件对象
+					return event ? event : window.event;
+				},
+				getTarget: function(event){										//获取事件目标
+					return event.target || event.srcElement;
+				},
+				stopPropagetion: function(event){								//阻止事件传播
+					if(event.stopPropagation){									//firefox
+						event.stopPropagation();
+					}else{
+						event.cancelBubble = true;								//IE8
+					}
+				},
+				preventDefault: function(event){								//阻止默认行为
+					if(event.preventDefault){
+						event.preventDefault();									//firefox
+					}else{
+						event.returnValue = false;								//IE8
+					}
+				}
+				
+			}
+			
+			var strong = document.querySelector("strong");
+			EventUtil.addHandler(strong,'click',handler);
+			EventUtil.removeHandler(strong,'click',handler);
+			
+			//事件对象
+			var links = document.getElementById("link");
+			document.body.addEventListener('click',function(e){
+				//alert('你点击了页面');
+			},false);
+			links.addEventListener('click',function(event){
+				event = EventUtil.getEvent(event);
+				//event.stopPropagation();			//阻止事件传播
+				//event.preventDefault();			//阻止默认行为
+				EventUtil.stopPropagetion(event);
+				EventUtil.preventDefault(event);
+				var title = event.type;
+				var v = event.target.text;				
+				alert(v);
+			},false);
+			
+			
+			//事件类型
+			//ui
+			EventUtil.addHandler(window,'load',function(){						//加载
+				var images = document.createElement('img');
+				EventUtil.addHandler(images,'load',function(event){
+					event = EventUtil.getEvent(event);
+					alert(EventUtil.getTarget(event).src);
+				},false);
+				images.src = 'http://www.jjhvip.com//template/default/statics/images/logo.png';
+				document.body.appendChild(images);
+			},false);
+			
+			EventUtil.addHandler(window,'upload',function(event){				//卸载
+				alert('Upload');
+			},false);
+			
+			EventUtil.addHandler(window,'resize',function(event){				//窗口大小
+				alert('窗口大小已改变');
+			},false);
+			
+			EventUtil.addHandler(window,'scroll',function(event){				//滚动
+				//alert('滚动了');
+			},false);
+			
+			var comon = document.getElementById("comon");
+			EventUtil.addHandler(comon,'focus',function(event){
+				document.body.style.backgroundColor = '#000';
+			},false);
+			EventUtil.addHandler(comon,'blur',function(event){
+				event = EventUtil.getEvent(event);
+				var v = EventUtil.getTarget(event).value;
+				document.body.style.backgroundColor = '#fff';
+			},false);
+			
+			//鼠标与滚动
+			var div = document.querySelector("#myDiv");
+			EventUtil.addHandler(div,'click',function(event){
+				event = EventUtil.getEvent(event);
+				alert('内容位置' + 'x:' + event.clientX + ',' + 'y:' +event.clientY);
+				alert('浏览器位置' + 'x:' + event.pageX + ',' + 'y:' + event.pageY);
+				alert('屏幕位置' + 'x:' + event.screenX + ',' + 'y:' + event.screenY);
+			},false);
+			
+			//HTML5事件
+			EventUtil.addHandler(window,'contextmenu',function(event){					//禁用上下文菜单
+				event = EventUtil.getEvent(event);
+				EventUtil.preventDefault(event);
+			},false);
+			EventUtil.addHandler(window,'beforeunload',function(event){					//页面卸载前事件
+				event = EventUtil.getEvent(event);
+				var message = '如果你离开我，我真的会想你';
+				event.returnValue = message;
+				confirm('你真的要离开我吗？');
+				return message;
+			});
+			EventUtil.addHandler(window,'hashchange',function(event){					//url参数变化事件
+				alert('old url:' + event.oldURL + '\n new URL' + event.newURL);
+			},false);
+			
+			//设备事件
+			EventUtil.addHandler(window,'orientationchange',function(event){			//屏幕旋转事件
+				console.log(event.orientation);
+			},false);
+			EventUtil.addHandler(window,'MozOrientation',function(event){
+				alert('X:' + event.x + 'Y:' + event.y + 'Z:' + event.z);
+			},false);
+			EventUtil.addHandler(window,'deviceorientation',function(event){
+				//alert(event.alpha);
+			},false);
+			
+			//设备触摸
+			function handleTouche(event){
+				if(event.touches.length === 1){						//只触摸一次
+					var output = document.getElementById("output");
+					switch(event.type){
+						case "touchstart" :
+							output.innerHTML = 'Touch Start (' + event.touches[0].clientX + ',' + event.touches[0].clientY + ')';
+							break;
+						case "touchend" :
+							output.innerHTML += '<br />Touch End (' + event.touches[0].clientX + ',' + event.touches[0].clientY + ')';
+							break;
+						case "touchmove" :
+							event.preventDefault();
+							output.innerHTML += '<br />Touch Move (' + event.changedTouches[0].clientX + ',' + event.changedTouches[0].clientY + ')';
+							break;
+					}
+				}
+			}
+			//设备手势
+			function handleGesture(event){
+				var div = document.getElementById("myDiv");
+				switch(event.type){
+					case "gesturestart":
+						div.innerHTML = 'rotation: ' + event.rotation + ' scale: ' + event.scale;
+						break;
+					case "gestureend":
+						div.innerHTML += '<br />rotation: ' + event.rotation + ' scale: ' + event.scale;
+						break;
+					case "gesturechange":
+						div.innerHTML += '<br />rotation: ' + event.rotation + ' scale: ' + event.scale;
+				}
+			}
+			
+			EventUtil.addHandler(document,'touchstart',handleTouche,false);
+			EventUtil.addHandler(document,'touchend',handleTouche,false);
+			EventUtil.addHandler(document,'touchmove',handleTouche,false);
+			
+			document.addEventListener('gesturestart',handleGesture,false);
+			document.addEventListener('gesturesend',handleGesture,false);
+			document.addEventListener('gesturechange',handleGesture,false);
+			
+			
+			//事件委托
+			var list = document.getElementById("myList");
+			EventUtil.addHandler(list,'click',function(event){
+				event = EventUtil.getEvent(event);
+				var tg = EventUtil.getTarget(event);
+				switch(tg.id){
+					case "clickLi_1":
+						tg.title = 'email';
+						break;
+					case "clickLi_2":
+						tg.innerHTML = 'balbalbala';
+						break;
+					case "clickLi_3":
+						tg.innerHTML = 'lantrem';
+						break;
+					case "clickLi_4":
+						tg.style.color = 'red';
+						break;
+					case "clickLi_5":
+						tg.style.backgroundColor = 'green';
+						break;
+				}
+				
+				
+			},false);
+			
+			//事件模拟
+			var event = document.createEvent("MouseEvent");
+			event.initMouseEvent('click',true,true,document.defaultView,0,0,0,0,false,false,false,false,0,null);
+			cont.dispatchEvent(event);
+			
+			
+			
+			var cheight = document.body.clientHeight;
+			var oheight = document.body.offsetHeight;
+			var sheight = document.body.scrollHeight;
+			console.log(cheight);
+			console.log(oheight);
+			console.log(sheight);
+		</script>
+		
+	</body>
+</html>

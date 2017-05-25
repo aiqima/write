@@ -1,0 +1,155 @@
+<!document HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>面向对象的程序设计</title>
+		<style type="text/css">
+			p{
+				color: red;
+			}
+			i{
+				color: #333;
+				font-size: 13px;
+			}
+		</style>		
+	</head>
+	<body>
+		<h2>理解对象</h2>
+		<h4>属性类型</h4>
+		<p>数据属性：</p>
+		<ul>
+			<li>[[Configurable]] <i>表示是否可以删除</i></li>
+			<li>[[Enumerable]] <i>表示是否可以枚举</i></li>
+			<li>[[Writable]] <i>表示是否可以修改</i></li>
+			<li>[[Value]] <i>属性的值</i></li>
+		</ul>
+		<hr />
+		<h2>创建对象</h2>
+		<h4>工厂模式</h4>
+		<h4>构造函数模式</h4>
+		<h4>原型模式</h4>
+
+
+		<script type="text/javascript">
+			//构建字符串的最快方式
+			var arr = ['whatever','you','go','and','whatever','you','do'];
+			var list = '<ul><li>' + arr.join("</li><li>") + '</li></ul>';
+			var dom = document.createElement('div');
+			dom.innerHTML = list;
+			//document.body.appendChild(dom);
+
+			//对象
+			var person = new Object();
+			person.name = 'Anakin';
+			person.age = 27;
+			person.say = function(){
+				return 'make force be with you';
+			}
+
+			//数据属性
+			Object.defineProperty(person,"name",{
+				writable: false,
+				value:'Obiwang'
+			});
+
+			var book = {};
+			Object.defineProperties(book,{
+				_year: {
+					value: 2004
+				},
+				edition: {
+					value: 1
+				},
+				year: {
+					get:function(){
+						return this._year;
+					},
+					set:function(newValue){
+						if(newValue > 2004){
+							this._year = newValue;
+							this.edition += newValue - 2004;
+						}
+					}
+				}
+			});
+			var descriptor = Object.getOwnPropertyDescriptor(book,"_year");	
+
+			//创建对象
+			//工厂模式
+			function createPerson(name,age,job){
+				var o = new Object();
+				o.name = name;
+				o.age = age;
+				o.job = job;
+				o.say = function(){
+					alert(this.name);
+				};
+				return o;
+			}
+			var person1 = createPerson('左丘明',30,'作家');
+
+			//构造函数模式
+			function Person(name,age,job){
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.say = say;
+			}
+			function say(){
+				return this.name;
+			}
+			var person2 = new Person('周杰伦',28,'singer');
+
+			//原型链模式
+			function Car(){}
+			Car.prototype.title = '大黄蜂';
+			Car.prototype.color = 'yellow';
+			Car.prototype.speed = 210;
+
+			var car1 = new Car();
+			var car2 = new Car();
+
+			car1.title = '兰博基尼';
+			console.log(car1.title);
+			console.log(car2.title);
+
+			function Conputer(){}
+			Conputer.prototype.name = 'Dever';
+			Conputer.prototype.CPU = '8G';
+			Conputer.prototype.size = 24;
+
+			var conputer1 = new Conputer();
+			var conputer2 = new Conputer();
+			console.log(conputer1.hasOwnProperty('name'));		//hasOwnProperty()判断属性是否在实例上;
+			conputer1.name = '变形金刚';
+			console.log(conputer1.hasOwnProperty('name'));
+
+			//更简单的原型链
+			function Friend(){}
+			Friend.prototype = {
+				constructor: Friend,
+				name: 'm',
+				sex: 'man',
+				type: 'good friend'
+			}
+			var lan = new Friend();
+
+			//混合模式
+			function Monkey(){
+				this.name = 'react',
+				this.age = 10,
+				this.like = 'banana'
+			}
+			Monkey.prototype = {
+				say: function(){
+					return 'I\'m ' + this.name;
+				}
+			}
+			var momo = new Monkey();
+
+
+
+
+		</script>
+	</body>	
+</html>
