@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<title>MVC和类</title>
 		<style>
-			body:after{
-				
+			.backred{
+				color: blue;
 			}
 		</style>		
 	</head>
@@ -65,11 +65,40 @@
 			<p v-show="blue">蓝色</p>
 			<p v-show="white">白色</p>
 		</div>
+		<h3>v-for指令</h3>
+		<hr />
 		<div id="app-7">
 			<ul>
 				<li v-for="value in values">姓名：{{value.name}}，年龄：{{value.age}}</li>
 			</ul>
 		</div>
+		<div id="app-8">
+			<ul>
+				<li v-for="item in list">数字： {{item}}</li>
+			</ul>
+		</div>
+		<h3>v-once指令</h3>
+		<hr />
+		<div id="app-9">
+			<p v-once v-text="sing">情人总分分合合，而我们却越爱越深</p>
+			<p v-text="poetry">千山鸟飞绝，万径人踪灭</p>
+		</div>
+		<h3>v-bing指令</h3>
+		<hr />
+		<div id="app-10">
+			<p  v-bind:class="{backred:IsBack}"><label v-if="IsBack">造化钟神秀，阴阳割昏晓</label></p>
+			<b v-bing:style="{color:myColor}">沉睡已百年，国人渐已醒</b>
+		</div>
+		
+		<h3>v-on指令</h3>
+		<hr />
+		<div id="app-11">
+			<p>{{Name}}</p>
+			<p>{{Age}}</p>
+			<button v-on:click="Age++;if(Name == 'Anakin')Name='Obiwang';else Name = 'Anakin'">成长</button>
+		</div>
+		
+		
 		
 		<script src="vue.js"></script>
 		<script>
@@ -142,6 +171,36 @@
 				data:{
 					values:[{name:'a',age:10},{name:'b',age:12}]
 				}					
+			});
+			
+			var app8 = new Vue({
+				el:'#app-8',
+				data:{
+					list:[1,2,3,4,5,6,7,8,9,10]
+				}
+			});
+			
+			var sentence = {
+				sing:'你是我心里的一首歌',
+				poetry:'风萧萧兮易水寒，壮士一去兮不复还'
+			};
+			var app9 = new Vue({
+				el:'#app-9',
+				data:sentence
+			});
+			var app10 = new Vue({
+				el:"#app-10",
+				data:{
+					IsBack:true,
+					myColor:'red'
+				}
+			});
+			var app11 = new Vue({
+				el:'#app-11',
+				data:{
+					Name:'Anakin',
+					Age:18
+				}
 			})
 			
 						
