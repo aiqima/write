@@ -1,0 +1,72 @@
+<!document HTML>
+<html>
+	<head>
+		<title>图片路径</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 400px;
+				height: 250px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			div img{
+				width:100%;
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.path-1{
+				clip-path: polygon(0 50%,50% 0,100% 50%,50% 100%);
+			}
+			.path-2{
+				clip-path: polygon(0 40%,40% 40%,50% 0,60% 40%,100% 40%,65% 60%,75% 100%,50% 70%,25% 100%,35% 60%);
+			}
+			.path-3{
+				clip-path: circle(20% at 50% 50%);
+				clip-path: circle(5% at 50% 60%);
+			}
+			.path-4{
+				clip-path: ellipse(20% 20% at 50% 50%);
+			}
+			.path-5{
+				clip-path: inset(30% 30% 30% 30% round 0 80% 0 80%);
+				transition: 2s clip-path;
+			}
+			.path-5:hover{
+				clip-path: inset(0% 0% 0% 0% round 100% 5% 100% 5%);
+			}
+
+		</style>
+	</head>
+	<body>
+		<div>
+			<img class="path-1" src="images/SouthMoravian.jpg" />
+		</div>
+		<div>
+			<img class="path-2" src="images/SouthMoravian.jpg" />
+		</div>
+		<div>
+			<img class="path-3" src="images/SouthMoravian.jpg" />
+		</div>
+		<div>
+			<img class="path-4" src="images/SouthMoravian.jpg" />
+		</div>
+		<div>
+			<img class="path-5" src="images/SouthMoravian.jpg" />
+		</div>
+	</body>	
+</html>
