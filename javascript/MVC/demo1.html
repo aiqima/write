@@ -97,6 +97,11 @@
 			<p>{{Age}}</p>
 			<button v-on:click="Age++;if(Name == 'Anakin')Name='Obiwang';else Name = 'Anakin'">成长</button>
 		</div>
+		<div id="app-12">
+			<p>{{Name}}</p>
+			<p>{{Age}}</p>
+			<button v-on:click="hello">click me</button>
+		</div>
 		
 		
 		
@@ -201,7 +206,20 @@
 					Name:'Anakin',
 					Age:18
 				}
-			})
+			});
+			var app12 = new Vue({
+				el:'#app-12',
+				data:{
+					Name:'小红',
+					Age:18
+				},
+				methods:{
+					hello:function(event){
+						this.Age++;
+						alert(this.Name + ',你好呀');
+					}
+				}
+			});
 			
 						
 		</script>
