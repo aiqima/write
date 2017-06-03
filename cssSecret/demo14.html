@@ -1,0 +1,144 @@
+<!document HTML>
+<html>
+	<head>
+		<title>饼形</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.box1{
+				border-radius: 50%;
+				background: black;
+				background-image: linear-gradient(90deg,transparent 50%,red 0);
+
+			}
+			.box1:before{
+				content: '';
+				display: block;
+				height: 100%;
+				margin-left: 50%;
+				background: red;
+				border-radius: 0 100% 100% 0 / 50%;
+				transform: rotate(.1turn);
+				transform-origin: left;
+			}
+			.box2{
+				border-radius: 50%;
+				background: black;
+				background-image: linear-gradient(90deg,transform 50%,red 0);
+			}
+			.box2:before{
+				content: '';
+				display: block;
+				height: 100%;
+				background-color: inherit;
+				margin-left: 50%;
+				border-radius: 0 100% 100% 0 / 50%;
+				transform-origin: left;
+				animation: spin 3s linear infinite,bg 6s step-end infinite;
+			}
+			.box3{
+				border-radius: 50%;
+				background: black;
+				background-image: linear-gradient(90deg,transform 50%,red 0);				
+			}
+			.box3:before{
+				content: '';
+				display: block;
+				height: 100%;
+				background-color: inherit;
+				margin-left: 50%;
+				border-radius: 0 100% 100% 0 / 50%;
+				transform-origin: left;
+				animation: spin 3s linear infinite,bg 6s step-end infinite;
+				animation-play-state: paused;
+				animation: inherit;
+			}
+			@keyframes spin{
+				to{
+					transform: rotate(.5turn);
+				}
+			}
+			@keyframes bg{
+				50%{
+					background: red;
+				}
+			}
+
+			.box4{
+				background: yellowgreen;
+				background-image: linear-gradient(90deg,transparent 50%,#655 0);
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.box4:before{
+				content: '';
+				background-color: inherit;
+				display: block;
+				height: 100%;
+				margin-left: 50%;
+				border-radius: 0 100% 100% 0 / 50%;
+				transform: rotate(0.1turn);
+				transform-origin: 0 50%;
+			}
+			.box5{
+				background: yellowgreen;
+				background-image: linear-gradient(90deg,transparent 50%,#655 0);
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.box5:before{
+				content: '';
+				background-color: inherit;
+				display: block;
+				height: 100%;
+				margin-left: 50%;
+				border-radius: 0 100% 100% 0 / 50%;
+				transform-origin: left;
+				animation: sky 3s linear infinite,bc 6s step-end infinite;
+			}
+			@keyframes sky{
+				to{
+					transform: rotate(180deg);
+					transform: rotate(0.5turn);
+				}
+			}
+			@keyframes bc{
+				50%{
+					background: #655;
+				}
+			}
+
+			
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3" style="animation-delay: -20s;"></div>	
+		
+		<div class="box4"></div>
+		<div class="box5"></div>
+		
+	</body>	
+</html>
