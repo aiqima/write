@@ -1,0 +1,107 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			div img{
+				width: 100%;
+				height: 100%;
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			.box1{
+				background: yellowgreen;
+				background-image: linear-gradient(90deg,transparent 50%,#655 0);
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.box1:before{
+				content: '';
+				background-color: inherit;
+				display: block;
+				height: 100%;
+				margin-left: 50%;
+				border-radius: 0 100% 100% 0 / 50%;
+				transform-origin: left;
+				animation: sky 3s linear infinite,bc 6s step-end infinite;
+			}
+			@keyframes sky{
+				to{
+					transform: rotate(180deg);
+					transform: rotate(0.5turn);
+				}
+			}
+			@keyframes bc{
+				50%{
+					background: #655;
+				}
+			}
+
+			body{
+				background:url(images/SouthMoravian.jpg) 0 / cover fixed;
+			}
+			main{
+				width: 800px;
+				height: 500px;
+				margin: 0 auto;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 40px;
+				background: hsla(0,0%,100%,.3);
+				position: relative;
+				overflow: hidden;
+			}
+			main::before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				/*background: rgba(255,0,0,.5);*/
+				background:url(images/SouthMoravian.jpg) 0 / cover fixed;
+				filter: blur(20px);
+				z-index: -1;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+
+		<main>
+			<blockqoute>
+				"The only way to get rid of a temptation[...]"
+				<footer> --
+					<cite>
+						Oscar Wilder,
+						The Picture of Dorian Gray
+					</cite>
+				</footer>
+			</blockqoute>
+		</main>
+
+	</body>	
+</html>
