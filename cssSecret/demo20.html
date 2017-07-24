@@ -1,0 +1,69 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 400px;
+				height: 400px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			div img{
+				width: 100%;
+				height: 100%;
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			body{
+				background: url(images/SouthMoravian.jpg) 0 / cover fixed;
+			}
+			.box1{
+				margin-left: auto;
+				margin-right: auto;
+				padding: 100px;
+				position: relative;
+				background: hsla(0,0%,100%,.3);
+				border-radius: 1em;
+				text-align: justify;
+				hyphens: auto;
+			}
+			.box1::before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: url(images/SouthMoravian.jpg) 0 / cover fixed;
+				filter: blur(20px);
+				z-index: -1;
+			}	
+			
+
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<h4>满江红·写怀</h4>
+			<h5>怒发冲冠，凭栏处、潇潇雨歇。抬望眼，仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切!</h5>
+			<h5>靖康耻，犹未雪。臣子恨，何时灭！驾长车，踏破贺兰山缺。壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。</h5>
+			<p>whatever you go and whatever you do, I'll right here waiting for you</p>
+		</div>
+	</body>	
+</html>
