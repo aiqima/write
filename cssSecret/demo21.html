@@ -1,0 +1,90 @@
+<!document HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 400px;
+				height: 400px;
+				margin: 40px;
+				color: #fff;
+				font-size: 18px;
+				text-align: center;				
+			}
+			div img{
+				width: 100%;
+				height: 100%;
+			}
+			.fix{
+				*zoom:1;
+			}
+			.fix:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.l{
+				float:left;
+			}
+			.r{
+				float:right;
+			}
+			body{
+				background: url(images/SouthMoravian.jpg) 0 / cover fixed;
+			}
+			.box1{
+				margin-left: auto;
+				margin-right: auto;
+				padding: 100px;
+				position: relative;
+				background: hsla(0,0%,100%,.3);
+				border-radius: 1em;				
+			}
+			.box1::before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: url(images/SouthMoravian.jpg) 0 / cover fixed;
+				filter: blur(20px);
+				z-index: -1;
+			}	
+			dl{
+				text-align: left;
+			}
+			dt,dd{
+				display: inline;
+				font-size: 15px;
+			}
+			dd + dt::before{
+				content: '\A';
+				white-space: pre;
+
+			}
+			dd + dd{
+				content: ' ,';
+				font-weight: normal;
+			}
+			
+
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<h4>窦娥冤</h4>
+			<dl>
+				<dt>【正宫】</dt>
+				<dd>没来由犯王法，不提放遭刑宪，叫声屈动地惊天。</dd>
+				<dt>【滚绣球】</dt>
+				<dd>有日月朝暮悬，有鬼神掌握生死权。</dd>
+				<dt>【刽子手】</dt>
+				<dd>快些呵，误了时辰也。</dd>
+				<dt>【叨叨令】</dt>
+				<dd>可怜我孤身只影无亲眷，则落的忍气吞声空嗟怨</dd>
+			</dl>
+		</div>
+	</body>	
+</html>
