@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-2.1.0.js" ></script>
+	</head>
+	<body>
+		<h2 class="clicky">亡羊补牢，为时已晚</h2>
+		<div>
+			<p>能进能退，乃真正法器</p>
+			<p>贼将休走，可敢与我一战？</p>
+			<p>一人，一枪，一匹马，英风锐气敌胆寒</p>
+			<p>掠阵突围，全凭一身忠肝义胆</p>
+		</div>
+		
+		<script>
+			
+			//User 模型
+			var User = {
+				type: 'model',
+				list: [
+					{
+						name:'张三',
+						age:26
+					},
+					{
+						name:'李四',age:25
+					},
+					{
+						name:'老王',
+						age:40
+					},
+					{
+						name:'小黑',
+						age:18
+					}
+				],
+				foo: {
+					food: '芒果'
+				},
+				destroy: function(){
+					return this.foo;
+				}
+			}
+			
+			var user = User["foo"];
+			
+			//控制器
+			var Controller = {};
+			//使用匿名函数封装作用域
+			(Controller.users = function($){
+				var nameClick = function(){
+					alert('加载完毕');
+				};
+			});
+			
+			var Person = function(name){
+				this.name = name;
+			};
+			var alice = new Person('alice');		//实例化Person对象
+			
+			//给类添加函数
+			Person.find = function(id){
+				//alert(id);
+			};
+			var person = Person.find(1);
+			
+			Person.prototype.breath = function(){
+				//console.log('123,木头人');
+			};
+			var person = new Person;
+			person.breath();
+			
+			//给“类”库添加方法
+			var Class = function(){
+				var klass = function(){
+					this.init.apply(this,arguments);
+				};
+				klass.prototype.init = function(){};
+				//定义 prototype 的别名
+				klass.fn = klass.prototype;
+				//定义类的别名
+				klass.fn.parent = klass;
+				
+				//给类添加属性
+				klass.extend = function(obj){
+					var extended = obj.extended;
+					for(var i in obj){
+						klass.fn[i] = obj[i];
+					}
+					if(included){
+						included(klass);
+					}
+				};
+				return klass;
+			}
+			
+			//基于原型的类继承
+			var Animal = function(){};
+			Animal.prototype.breath = function(){
+				console.log('breath');
+			};
+			
+			var Dog = function(){};
+			Dog.prototype = new Animal;		//Dog 继承 Animal
+			Dog.prototype.wag = function(){
+				console.log('wag tail');
+			}
+			var dog = new Dog;
+			//dog.wag();
+			//dog.breath();
+			
+			//函数的调用
+			$('.clicky').click(function(){
+				//this 指向当前节点
+				$(this).hide();
+			});
+			$('p').each(function(){
+				//this 指向本次迭代
+				$(this).remove();
+			});
+			
+			var clicky = {
+				wasClicked: function(){
+					alert('hello,never see you again')	
+				},
+				addListeners: function(){
+					var self = this;
+					$('.clicky').click(function(){
+						self.wasClicked();
+					});
+				}
+			};
+			//clicky.addListeners();
+			
+			var proxy = function(func,thisObject){
+				return (function(){
+					return func.apply(thisObject,arguments);
+				});
+			};
+			var clicky2 = {
+				wasClicked: function(){
+					alert('long time no see');
+				},
+				addListeners: function(){
+					var self = this;
+					$('.clicky').click(proxy(this.wasClicked,this));
+				}
+			};
+			
+			$('.clicky').click($.proxy(function(){},this));
+			
+			//委托调用
+			var App = {
+				log: function(){
+					if(typeof console == "undefined") return;
+					
+					//将参数转换为合适的数组
+					var args = jQuery.makeArray(arguments);
+					
+					//插入一个新的参数
+					args.unshift("(App)");
+					
+					//委托给console
+					console.log.apply(console,args);
+				}
+			};
+			
+			var Person = function(){};
+			
+			(function(){
+				var findById = function(id){
+					if(typeof id == 'number'){
+						id ++;
+					}
+				};
+				
+				Person.find = function(id){
+					if(typeof id == 'integer'){
+						return findById(id);
+					}
+				};
+			})();
+			
+			(function(exports){
+				var foo = "bar";
+				
+				//将变量暴露出去
+				exports.foo = foo;
+			})(window);
+			assertEqual(foo,'bar');
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数据和模型</title>
+		<script type="text/javascript" src="jquery-2.1.0.js" ></script>
+	</head>
+	<body>
+		
+		
+		<script>
+		//命名空间
+		var User = function(atts){
+			this.attributes = atts || {};
+		};
+		User.prototype.destroy = function(){
+			alert('It\'s ok!');
+		}
+		User.fetchRemote = function(){
+			
+		}
+		
+		//原型继承
+		if(typeof Object.create !== "function"){
+			Object.create = function(o){
+				function F(){};
+				F.prototype = o;
+				return new F();
+			}
+		}
+		
+		var Model = {
+			inherited: function(){},
+			created: function(){},
+			
+			prototype: {
+				init:function(){}
+			},
+			create: function(){
+				var object = Object.create(this);
+				object.parent = this;
+				object.prototype = object.fn = Object.create(this.prototype);
+				
+				object.create();
+				this.inherited(object);
+				return object;
+			},
+			init: function(){
+				var instance = Object.create(this.prototype);
+				instance.parent = this;
+				instance.init.apply(instance,arguments);
+				return instance;
+			},
+			extend: function(o){
+				var extended = o.extended;
+				$.extend(this,o);
+				if(extended) extended(this);				
+			},
+			include: function(o){
+				var included = o.included;
+				$.extend(this.prototype,o);
+				if(included) included(this);
+			}
+			
+		};
+		
+		var Asset = Model.create();  //实例化
+		var User = Model.create();
+		var user = User.init();
+		
+		Model.extend({					//添加对象属性
+			find: function(){}
+		});
+		
+		Model.include({					//添加实例属性
+			init: function(atts){
+				alert("Hello world");
+			},
+			load: function(attributes){
+				alert("It's wrong");
+			}
+		});		
+		
+		
+		$.extend(Model.prototype,{
+			init: function(atts){
+				if(atts){
+					this.load(atts);
+				}
+			},
+			load:function(attributes){
+				for(var name in attributes){
+					this[name] = attributes[name];
+				}
+			}
+		});
+		
+		var asset = Asset.init({name: "foo.png"});
+		
+		</script>
+	</body>
+</html>

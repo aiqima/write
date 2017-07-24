@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-2.1.0.js"></script>
+		<style>
+			.active{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<p>床前明月光，疑是地上霜</p>
+		</div>
+		<div id="wrap">
+			<p>举头望明月，低头思故乡</p>
+		</div>
+		
+		<div>
+			<ul id="tabs">
+				<li data-tab = "users">Users</li>
+				<li data-tab = "groups">groups</li>
+			</ul>
+		</div>
+		<div id="tabsContent">
+			<div data-tab="users">Users</div>
+			<div data-tab="groups">Groups</div>
+		</div>
+		
+		<script>
+			//创建按钮
+			var box =document.getElementById("box1");
+			var wrap = document.getElementById("wrap");
+			var button = document.createElement("button");
+			var btext = document.createTextNode('Go!');
+			var inpbtn = document.createElement('input');
+			
+			button.appendChild(btext);
+			box.appendChild(button);
+			
+			inpbtn.type = 'button';
+			inpbtn.value = 'home';
+			wrap.appendChild(inpbtn);			
+			
+			
+			//事件侦听
+//			var listener = function(event){		//字面量函数必须放前面
+//				alert(event.type);
+//			}
+			button.addEventListener('dblclick',listener,false);
+			
+			function listener(event){			//函数表达式，函数声明提升
+				alert(event.type)
+			}
+			button.removeEventListener('dblclick',listener,false);		//移除事件侦听			
+			
+			box.addEventListener('click',function(event){
+				//alert(event.target);
+			},false);
+			button.addEventListener('click',function(event){
+				event.stopPropagation();			//阻止事件冒泡
+				//alert(event.pageX + ',' + event.pageY);
+			},false);
+			
+			//切换上下文
+			new function(){
+				this.appName = 'wem';
+				document.body.addEventListener('click',function(e){
+					//alert(this.appName);
+				},false);
+			}();
+			
+			//事件委托
+			var arr = ['会','当','凌','绝','顶'];
+			var ul = document.createElement('ul');
+			var list = '<li>' + arr.join('</li><li>') + '</li>';
+			ul.innerHTML = list;
+			wrap.insertBefore(ul,inpbtn);
+			
+			ul.addEventListener('click',function(event){
+				var e = event ? event : window.event;
+				var tg = e.target || e.srcElement;
+				if(event.target.tagName == "LI"){
+					alert(event.target.textContent);
+				}
+//				switch(event.target.tagName){
+//					case "LI" : alert(event.target.textContent); break;
+//					default : alert('error!');
+//				}
+			},false);
+		
+			//jquery自定义事件
+			$.fn.tabs = function(control){
+				var element = $(this);
+				control = $(control);
+				
+				element.find("li").on("click",function(){
+					//从列表中删除或添加 .active
+					element.find("li").removeClass("active");
+					$(this).addClass("active");
+					
+					//给tabContent 添加或删除.active
+					var tabName = $(this).attr("data-tab");
+					control.find(">[data-tab]").removeClass("active");
+					control.find(">[data-tab='" + tabName + "']").addClass("active");
+					
+				});
+				//激活第一个选项卡
+				element.find("li:first").addClass("active");
+				control.find("div:first").addClass("active");
+				
+				//返回this以启用链接调用
+				return this;
+			}
+			$("ul#tabs").tabs("#tabsContent");
+			
+			//DOM无关事件
+			var PubSub = {
+				subscribe: function(ev,callback){
+					//创建_callbacks对象，除非它已经存在
+					var calls = this._callbacks || (this._callbacks = {});
+					
+					//针对给定的事件key创建一个数组，除非这个数组已经存在
+					//然后将回调函数追加到这个数组中
+					(this._callbacks[ev] || (this._callbacks[ev] = [])).push(callback);
+					return this;
+				},
+				publish: function(){
+					//将arguments对象转换为真正的数组
+					var args = Array.prototype.slice.call(arguments,0);
+					
+					//拿出第1个参数，即事件名称
+					var ev = args.shift();
+					
+					//如果不存在_callbacks对象，则返回
+					//如果不包含给定事件的数组，则返回
+					var list,calls,i,l;
+					if(!(calls = this._callbacks)) return this;
+					if(!(list = this._callbacks[ev])) return this;
+					
+					//触发回调
+					for(i=0,l=list.length;i<l;i++){
+						list[i].apply(this,args);
+						return this;
+					}					
+				}
+			};
+			
+			//使用方法
+			PubSub.subscribe("wen",function(){
+				alert("Wem!");
+			});
+			PubSub.publish("wem");
+			
+		</script>
+		
+	</body>
+</html>

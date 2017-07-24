@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>控制器和状态</title>
+		<script type="text/javascript" src="jquery-2.1.0.js" ></script>
+	</head>
+	<body>
+		
+		<script>
+			(function($){
+				var mod = {};
+				mod.load = function(func){
+					$($.proxy(func,this));
+				};
+				
+				mod.load(function(){
+					this.view = $("#view");
+				})
+				
+			})();
+		</script>
+		
+	</body>
+</html>
