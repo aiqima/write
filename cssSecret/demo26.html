@@ -1,0 +1,58 @@
+<!document HTML>
+<html>
+	<head>
+		<title>下划线</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 400px;
+				margin: 40px;
+			}
+			.box1 a[href]{
+				border-bottom: 1px solid gray;
+				text-decoration: none;
+			}
+			.box2 a[href]{
+				display:inline-block;
+				border-bottom: 1px solid gray;
+				text-decoration: none;
+				line-height: .9;
+			}
+			.box3 a[href]{
+				text-decoration: none;
+				background: linear-gradient(gray,gray) no-repeat;
+				background-size: 100% 1px;
+				background-position: 0 1.15em;
+			}
+			.box4 a[href]{
+				text-decoration: none;
+				background: linear-gradient(gray,gray) no-repeat;
+				background-size: 100% 1px;
+				background-position: 0 1.15em;
+				text-shadow: .05em 0 white,-.05em 0 white;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 原始效果 -->
+		<div class="">
+			<p>Sometimes someone world speak in a boat. But most of the boats were silent except for the dip of the oars.<a href="#">He thought, the birds have a harder life than we do except for the robber birds and the heavy strong ones.</a> He was sorry for the birds, especially the small delicate dark terns that were always flying and looking and almost never finding,</p>
+		</div>
+		<!-- 使用下边框充当下划线 #文本与下划线间距太大 -->
+		<div class="box1">
+			<p>Sometimes someone would speak in a boat. But most of the boats were silent except for the dip of the oars.<a href="#">He thought, the birds have a harder life than we do except for the robber birds and the heavy strong ones.</a> He was sorry for the birds, especially the small delicate dark terns that were always flying and looking and almost never finding,</p>
+		</div>
+		<!-- 调整行高 #换行有问题 -->
+		<div class="box2">
+			<p>Sometimes someone would speak in a boat. But most of the boats were silent except for the dip of the oars.<a href="#">He thought, the birds have a harder life than we do except for the robber birds and the heavy strong ones.</a> He was sorry for the birds, especially the small delicate dark terns that were always flying and looking and almost never finding,</p>
+		</div>
+		<!-- 渐变背景穿越 -->
+		<div class="box3">
+			<p>Sometimes someone would speak in a boat. But most of the boats were silent except for the dip of the oars.<a href="#">He thought, the birds have a harder life than we do except for the robber birds and the heavy strong ones.</a> He was sorry for the birds, especially the small delicate dark terns that were always flying and looking and almost never finding,</p>
+		</div>
+		<!-- 渐变背景避开文字 -->
+		<div class="box4">
+			<p>Sometimes someone would speak in a boat. But most of the boats were silent except for the dip of the oars.<a href="#">He thought, the birds have a harder life than we do except for the robber birds and the heavy strong ones.</a> He was sorry for the birds, especially the small delicate dark terns that were always flying and looking and almost never finding,</p>
+		</div>
+	</body>	
+</html>
