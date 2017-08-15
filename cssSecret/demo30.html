@@ -1,0 +1,27 @@
+<!document HTML>
+<html>
+	<head>
+		<title>扩大可点击区域</title>
+		<meta charset="utf-8" >
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 30px;
+				background: #58a;
+			}
+			.box1{
+				border-radius: 50%;				
+			}
+			.box1:hover{
+				border: 10px solid transparent;
+				background-clip: padding-box;
+				box-shadow: 0 0 0 1px rgba(0,0,0,.3) inset,
+							0 .1em .2em -.05em rgba(0,0,0,.5);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>		
+	</body>	
+</html>
