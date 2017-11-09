@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单控件绑定</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">			
+			<label>message is:</label>
+			<input type="text" v-model="message" />
+			<h5>{{ message }}</h5>
+			<span>Multiline message is:</span>
+			<p style="white-space: pre-line;">{{ message2 }}</p>
+			<textarea v-model="message2" rows="6" cols="30"></textarea>
+			<br />
+			<!--复选框-->
+			<input type="checkbox" v-model="checked"  />
+			<label>{{ checked }}</label>
+			<br />
+			<!--多个单选绑定数组-->
+			<input type="checkbox" value="jack" id="jack" v-model="checkName" />
+			<label for="jack">jack</label>
+			<input type="checkbox" value="john" id="joho" v-model="checkName" />
+			<label for="john">john</label>
+			<input type="checkbox" value="anakin" id="anakin" v-model="checkName" />
+			<label for="anakin">anakin</label>
+			<h5>多选值：{{ checkName }}</h5>
+			<br />
+			<!--单选按钮-->
+			<input type="radio" value="one" id="one" v-model="picked" />
+			<label for="one">one</label>
+			<input type="radio" value="two" id="two" v-model="picked" />
+			<label for="two">two</label>
+			<h5>单选值：{{ picked }}</h5>
+			
+			<!--下拉框-->
+			<select v-model="selected">
+				<option value="" disabled="disabled">请选择</option>
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+				<option>D</option>
+			</select>
+			<h5>下拉框值：{{selected}}</h5>
+							
+			<!--下拉多选-->
+			<select multiple="multiple" v-model="mselect">
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+				<option>D</option>
+				<option>E</option>
+			</select>
+			<h5>多选下拉框值：{{ mselect }}</h5>
+			
+			<!--循环中的下拉框-->
+			<select v-model="fselect">
+				<option v-for="option in options" v-bind:value="option.value" >{{ option.text }}</option>
+			</select>
+			<h5>文本：{{ fselect }}</h5>
+			
+		</div>
+		
+		<script>
+			var data = {
+				message: '',
+				message2: '',
+				checked: false,
+				checkName:[],
+				picked:'',
+				selected:'',
+				mselect:[],
+				fselect:'A',
+				options:[
+					{text:'one',value:'A'},
+					{text:'two',value:'B'},
+					{text:'tree',value:'C'},
+					{text:'fore',value:'D'}
+				]
+			};
+			var vm = new Vue({
+				el:"#box",
+				data:data
+			});
+			
+		</script>
+		
+	</body>
+</html>

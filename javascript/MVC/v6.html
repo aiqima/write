@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>if else</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<h1 v-if="blook">java => script</h1>
+			<h1 v-else>Object</h1>
+			<template v-if="hey">
+				<p>愚者千虑必有一得，智者千虑必有一失</p>
+				<p>君不知臣，臣不知君，罢了。。</p>
+			</template>
+			<p v-if="Math.random() > 0.5">now you see me</p>
+			<p v-else>now you don't'</p>
+			<p v-if="type === 'A'">A</p>
+			<p v-else-if="type === 'B'">B</p>
+			<p v-else-if="type === 'C'">C</p>
+			<p v-else>FUCK</p>
+		</div>
+		<div id="app">
+			<p v-if="lan">万里赴戎机，关山度若飞</p>
+			<p v-else>朔气传金柝，寒光照铁衣</p>
+			<template v-if="loginType === 'username'">
+				<label>User Name:</label>
+				<input type="text" placeholder="Enter your username" />
+			</template>
+			<template v-else>
+				<label>Email:</label>
+				<input type="email" placeholder="Enter your email" />
+			</template>
+			<button v-on:click="toggleType">toggle type</button>
+			<template v-if="boss === 'YY'">
+				<label>账号：</label>
+				<input type="text" placeholder="请输入账号" key="a" />
+			</template>
+			<template v-else>
+				<label>密码：</label>
+				<input type="text" placeholder="请输入密码" key="b" />
+			</template>
+			<button v-on:click="admin">login</button>
+		</div>
+		
+		<script>
+			var data = {
+				blook: false,
+				hey: false,
+				type: 'B'
+			};
+			var vm = new Vue({
+				el: "#box",
+				data: data
+			});
+			var app = new Vue({
+				el:"#app",
+				data: {
+					lan: false,
+					loginType: 'username',
+					toggleType: function(){
+						if(app.loginType === "username"){
+							app.loginType = "";
+						}else{
+							app.loginType = "username";
+						}
+					},
+					boss: 'YY',
+					admin: function(){
+						if(app.boss === 'YY'){
+							app.boss = "";
+						}else{
+							app.boss = "YY";
+						}
+					}
+				}
+			});
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

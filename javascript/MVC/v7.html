@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<ul v-for="item in items">
+				<li>{{ item.text }}</li>
+			</ul>
+			<br />
+			<ul v-for="(item,index) in lun">
+				<li>{{ index }}{{ say }}{{ item.text }}</li>
+			</ul>
+			<ul v-for="value in object">
+				<li>{{ value }}</li>
+			</ul>
+			<ul v-for="n in 10">
+				<li>{{ n }}</li>
+			</ul>
+		</div>
+		<div id="app">
+			<h5>{{ todoText }}</h5>
+			<input type="text" v-model="todoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo" />
+			<ul>
+				<li is="todo-item" v-for="(todo,index) in todos" v-bind:key="todo" v-bind:title="todo" v-on:remove="todos.splice(index,1)"></li>
+			</ul>
+			<ul v-for="bloo in bloos">
+				<li v-if="bloo.m">{{ bloo.text }}</li>
+			</ul>
+		</div>
+		
+		<script>
+			var data = {
+				items: [
+					{text: '秋风清'},
+					{text: '秋月明'},
+					{text: '落叶聚还散'},
+					{text: '寒鸦栖复惊'},
+					{text: '相知相见知何日'},
+					{text: '此时此夜难为情'},
+					{text: '入我相思门'},
+					{text: '知我相思苦'},
+					{text: '长相思兮长相忆'},
+					{text: '短相思兮无穷极'},
+					{text: '早知如此绊人心'},
+					{text: '何如当初莫相识'}
+				],
+				say: '子曰：',
+				lun: [
+					{text: '吾十有五而立志于学，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩'},
+					{text: '君子食无求饱，居无求安，敏于事而慎于言，就有道而正焉，可谓好学也已'},
+					{text: '饭疏食，饮水，曲肱而枕之，乐亦在其中，不义而富贵，于我如浮云'}
+				],
+				object:{
+					firstName: 'John',
+					lastName: 'Doe',
+					age: 30
+				}
+			}
+			var vm = new Vue({
+				el:"#box",
+				data: data
+			});
+			
+			//组件
+			Vue.component('todo-item',{
+				template: `
+				    <li>
+				      {{ title }}
+				      <button v-on:click="$emit('remove')">X</button>
+				    </li>
+				  `,
+				props:['title']
+			});
+			var app = new Vue({
+				el:"#app",
+				data: {
+					todoText: "",
+					todos: [
+						'Do the dishes',
+					    'Take out the trash',
+					    'Mow the lawn'
+					],
+					bloos: [
+						{text:'曹操',m:true},
+						{text:'刘备',m:false},
+						{text:'孙权',m:true},
+						{text:'司马懿',m:false}
+					]
+				},
+				methods: {
+					addNewTodo: function(){
+						this.todos.push(this.newTodoText);
+						this.newTodoText = '';
+					}
+				}
+			});
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

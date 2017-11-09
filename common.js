@@ -128,4 +128,3 @@ function tipBox(inner){
 		$('.tip-box').hide();								//定时隐藏提示框
 	},2000);
 }
-

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>grammar</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<p>Messager:{{ mag }}</p>
+			<div v-html="rewHtml"></div>
+			<p v-bind:id="'list'-id">{{ num + 1 }}</p>
+			<p>{{ ok ? "it's OK!" : "it was wrong"}}</p>
+			<p v-if="seen">now you see me</p>
+			<p>{{ mag.split('').reverse().join('') }}</p>
+			<p @click="someThing">click here</p>
+			<a :href="url">xxx</a>
+		</div>		
+		
+		
+		<script>
+			var data = {
+				id: 1,
+				num: 2,
+				ok: true,
+				mag:'I love you more than I can say',
+				rewHtml:'<strong>you never say goodbay</strong>',
+				seen: false,
+				url: document.URL,
+				someThing: function(){
+					alert('所有不能实现的欲望，也许皆是这仲夏之夜的一场绮梦');
+				}
+			}
+			var vm = new Vue({
+				el:"#box",
+				data: data
+			});
+		</script>		
+	</body>
+</html>

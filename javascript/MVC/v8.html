@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>event</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<h5>{{ message }} {{ count }}</h5>
+			<button v-on:click="getter">Click me</button>
+			<h5>{{ omg }}</h5>
+			<button v-on:click="say('hi')">say</button>
+			<a href="http://www.bing.com" v-on:click="warn('你是不可能跳到百度的',$event)" >百度</a>
+		</div>
+		
+		
+		<script>
+			var vm = new Vue({
+				el:"#box",
+				data:{
+					message:'whatever you go and whatever you do',
+					count: 0,
+					name:'vue.js'
+				},
+				methods:{
+					getter: function(event){
+						alert('Hello '+this.name);
+						if(event){
+							alert(event.target.tagName);
+						}
+					},
+					say:function(what){
+						alert(what);
+					},
+					warn: function(message,event){
+						event.preventDefault();
+						alert(message);
+					}
+				}
+			});
+			
+		</script>
+		
+		
+	</body>
+</html>

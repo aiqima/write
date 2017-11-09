@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>class and style</title>
+		<script type="text/javascript" src="vue.js" ></script>
+		<style>
+			.cr{
+				color: red;
+			}
+			.tc{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<h5 v-bind:class="classObject" class="hey">{{ title }}</h5>
+			<p v-bind:class="{tc:isCenter}">{{ react }}</p>
+			<!--内联样式-->
+			<p v-bind:style="{color:textColor,fontSize:textSize + 'px'}">{{styleText}}</p>
+			<p v-bind:style="styleObject">{{ miss }}</p>
+		</div>
+		
+		<script>
+			var data = {
+				title: '来啊，互相伤害啊！',
+				react: '来就来，谁怕谁！',
+				isActive: true,
+				isCenter: true,
+				error: null,
+				styleText: '生当作人杰，死亦为鬼雄，至今思项羽，不肯过江东',
+				textColor: 'yellowgreen',
+				textSize: '16',
+				miss: '秋风清，秋月明；落叶聚还散，寒鸦栖复惊；相思相见知何日，此时此夜难为情；入我相思门，知我相思苦；长相思兮长相忆，短相思兮无穷极；早知如此绊人心，何如当初莫相识',
+				styleObject: {
+					color:'orange',
+					fontSize: '16px'					
+				}
+				
+			};
+			var vm = new Vue({
+				el:"#box",
+				data: data,
+				computed: {
+					classObject: function(){
+						return {
+							cr: this.isActive && !this.error,
+							isCenter: this.error && this.error.type === 'fatal'
+						}
+					}
+				}
+			});
+		</script>
+		
+	</body>
+</html>

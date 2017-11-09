@@ -1,0 +1,7 @@
+/* 字母大小写 */
+{
+	text-transform: capitalize;		/*首字母大写*/
+	text-transform: uppercase;		/*大写*/
+	text-transform: lowercase;		/*小写*/
+	
+}

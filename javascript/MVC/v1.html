@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello vue</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-bind:title="time">{{ message }}</h1>
+			<p v-if="see">{{ say }}</p>
+			<input type="text" v-model="say"  />
+			<button v-on:click="reverseMessage">逆转消息</button>
+			<ul>
+				<li v-for="i in todos">{{ i.text }}</li>
+			</ul>
+		</div>
+		<hr />
+		<div id="item">
+			<ol>
+				<todo-item v-for="a in gList" v-bind:todo="a"></todo-item>
+			</ol>
+		</div>
+		<hr />
+		
+		
+		
+		<script>
+			var vue = new Vue({
+				el: "#app",
+				data:{
+					message: "Hello vue!",
+					time: "页面家在于" + new Date(),
+					see: true,
+					say: "",
+					todos: [
+						{text: "学习javascript"},
+						{text: "学习vue"},
+						{text: "整一个牛逼项目"}
+					]
+				},
+				methods:{
+					reverseMessage: function(){
+						this.message = this.message.split('').reverse().join('');
+					}
+				}
+			});
+			
+			Vue.component('todo-item',{
+				props: ['todo'],
+				template:'<li>{{ todo.text }}</li>'
+			});
+			
+			var item = new Vue({
+				el:"#item",
+				data:{
+					gList:[
+						{text:"茄子"},
+						{text:"黄瓜"},
+						{text:"胡萝卜"},
+						{text:"水蜜桃"}
+					]
+				}
+			});
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

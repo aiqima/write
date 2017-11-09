@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Calculation attribute</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<h5 v-bind:title="now">{{ message }}</h5>
+			<p>'{{ reverseMessage() }}'</p>
+		</div>
+		<div id="watch-example">
+			<p>Ask a yes/no question:<input type="text" v-model="question" /></p>
+			<p>{{ answer }}</p>
+		</div>
+		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+		<script>
+			var data = {
+				message: 'Calculation attribute',
+				now: new Date(),
+				reverseMessage: function(){
+					return this.message.split('').reverse().join('');
+				},
+				firstName: 'Foo',
+				lastName: 'Bar'
+			}
+			var vm = new Vue({
+				el:"#box",
+				data: data,
+				computed: {
+					fullName: {
+						//getter
+						get: function(){
+							return this.firstName + ' ' + this.lastName;
+						},
+						//setter
+						set: function(newValue){
+							var names = newValue.split('');
+							this.firstName = names[0];
+							this.lastName = names[names.length - 1];
+						}
+					}
+				}
+			});
+			
+			var hey = new Vue({
+				el:"#watch-example",
+				data:{
+					question:'',
+					answer:'I cannot give you an answer until you ask a question'
+				},
+				watch:{
+					//如果question没发生变化，则这个函数一直执行
+					question:function(newQuestion){
+						this.answer = 'Waiting for you to stop a tryping';
+						this.getAnswer();
+					}
+				},
+				methods:{
+					getAnswer:_.debounce(
+						function(){
+							var vm = this;
+							if(this.question.indexOf('?')=== -1){
+								vm.answer = 'Qustions ususlly contain a question mark. ;-)';
+								return;
+							}
+							vm.answer = 'Thinking...';
+							axios.get('https://yesno.wtf/api')
+								.then(function (response){
+									vm.answer = _.capitalize(response.data.answer);
+								})
+								.catch(function(error){
+									vm.answer = 'Error! Could not reach the API. ' + error									
+								})
+						},
+						//这里是我们为用户停止输入等待的毫秒数
+						500
+					)
+				}
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

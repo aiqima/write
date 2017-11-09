@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>props</title>
+		<script type="text/javascript" src="vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<h5>{{ meg }}</h5>
+			<child></child>
+			<alphago message="人生得意须尽欢，莫使金樽空对月"></alphago>
+			<lb3 my-message="天生我材必有用，千金散尽还复来"></lb3>
+		</div>
+		<div id="app">			
+			<hey v-bind:my-component="parentMsg"></hey>
+			<br />
+			<example></example>
+			<input type="text" v-model="parentMsg" />
+		</div>
+		<div id="mvc">
+			<h5>{{ xs }}</h5>
+		</div>
+		
+		<script>
+			var data = {
+				meg: "君不见，高堂明镜悲白发，朝如青丝暮成雪"
+			};
+			
+			//注册组件
+			Vue.component('alphago',{
+				//声明props
+				props:['message'],
+				//就像data 一样，props可以使用在模板内
+				//也可以在vm中，像this.message那样使用
+				template: '<h5>{{ message }}</h5>'				
+				
+			});
+			Vue.component('lb3',{
+				props:['myMessage'],
+				template:'<h5>{{ myMessage }}</h5>'
+			});
+			Vue.component('hey',{
+				props:['myComponent'],
+				template:'<h5>{{ myComponent }}</h5>'
+			});
+			Vue.component('example',{
+				props:{
+					//基础类型检测，（null表示任何类型都可以）
+					propA: Number,
+					//多种类型
+					propB: [String,Number],
+					//必传且是字符串
+					propC: {
+						type: String,
+						rrequired: true
+					},
+					//数字，有默认值
+					propD: {
+						type:Number,
+						default: 100
+					},
+					//数组、对象的默认值应该由一个工厂函数返回
+					propE: {
+						type: Object,
+						default: function(){
+							return {message:'hello'}
+						}
+					},
+					//自定义验证函数
+					propF: {
+						validator: function(value){
+							return value > 10
+						}
+					}
+				}
+			});
+			var vm = new Vue({
+				el:"#box",
+				data: data
+			});
+			
+			var vmm = new Vue({
+				el:"#app",
+				data:{
+					parentMsg:'古来圣贤皆寂寞，唯有饮者留其名'
+				}
+			});
+			
+			var mvc = new Vue({
+				el:"#mvc",
+				data:{
+					xs: 'too yuong too simple'
+				}
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>
