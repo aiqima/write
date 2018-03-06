@@ -116,6 +116,14 @@ var EventUtil = {
 	}
 }
 
+//寄生组合式继承
+function inheritePrototype(C,P){
+	var newPro = P.prototype;
+	newPro.constructor = C;
+	C.prototype = newPro;
+}
+
+
 //提示框组件
 function tipBox(inner){
 	//$('#tipText').innerHTML = inner;
