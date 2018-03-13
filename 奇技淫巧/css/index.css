@@ -12,3 +12,10 @@
 	overflow: hidden;				/*超出隐藏*/
 	text-overflow: ellipsis;		/*超出部分用...表示*/
 }
+
+/*书写模式*/
+{
+	writing-mode: horizontal-tb;	/*水平方向从上到下*/	
+	writing-mode: vertical-lr;		/*垂直方向从左到右*/
+	writing-mode: vertical-rl;		/*垂直方向从右到左*/
+}
